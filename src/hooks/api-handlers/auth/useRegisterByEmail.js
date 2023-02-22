@@ -42,7 +42,10 @@ const useRegisterByEmail = () => {
     setStep,
     setIsLoading,
     setData: (params) => setData((prev) => ({ ...prev, ...params })),
-    resetData: (params) => setData({}),
+    resetData: (params) => {
+      setStep(0);
+      setData(params)
+    },
     sendOtp,
     regesterComplete
   };

@@ -20,7 +20,8 @@ const LoginByEmail = () => {
         })
       })
       .catch((err) => {
-        error(err.res?.data?.result?.status?.message)
+ 
+        error(err.response?.data?.result?.status?.message)
         setIsLoading(false)
       })
   }

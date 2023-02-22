@@ -14,6 +14,7 @@ const SignUpByPhone = () => {
     setStep,
     regesterComplete,
     setIsLoading,
+    resetData 
   } = useRegisterByPhone()
   const { success, error } = useAlert()
   const onClickHandler = (step) => {
@@ -32,13 +33,19 @@ const SignUpByPhone = () => {
         .then((res) => {
           success(res?.data?.result?.status?.message)
           setUser({
-            ...res?.data?.result?.data.user,
+            ...res?.data?.result?.data?.user,
             token: res?.data?.result?.data?.token,
           })
+          console.log('sssss', {
+            ...res?.data?.result?.data?.user,
+            token: res?.data?.result?.data?.token,
+          })
+          resetData()
         })
         .catch((err) => {
           error(err.response?.data?.result?.status?.message)
           setIsLoading(false)
+          console.log('eror')
         })
     }
   }
@@ -112,7 +119,7 @@ const SignUpByPhone = () => {
       )}
       <Button
         isLoading={isLoading}
-        title={'ورود '}
+        title={' تایید '}
         onClick={() => onClickHandler(step)}
       />
     </div>

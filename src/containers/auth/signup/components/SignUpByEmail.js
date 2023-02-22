@@ -16,8 +16,9 @@ const SignUpByPhone = () => {
     setStep,
     regesterComplete,
     setIsLoading,
+    resetData,
   } = useRegisterByEmail()
-  const {setUser}=useUser()
+  const { setUser } = useUser()
   const { success, error } = useAlert()
   const onClickHandler = (step) => {
     if (step == 0) {
@@ -38,6 +39,7 @@ const SignUpByPhone = () => {
             ...res?.data?.result?.data.user,
             token: res?.data?.result?.data?.token,
           })
+          resetData()
         })
         .catch((err) => {
           error(err.response?.data?.result?.status?.message)
@@ -55,7 +57,6 @@ const SignUpByPhone = () => {
           labelProps={{ className: 'text-lg !text-base' }}
           icon={'material-symbols:alternate-email'}
           inputProps={{
-            
             className: 'text-left outline-none h-14 !text-base',
             type: 'email',
             name: 'email',
@@ -118,7 +119,7 @@ const SignUpByPhone = () => {
       )}
       <Button
         isLoading={isLoading}
-        title={'ورود '}
+        title={' تایید '}
         onClick={() => onClickHandler(step)}
       />
     </div>
