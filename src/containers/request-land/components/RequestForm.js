@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 const RequestForm = () => {
   const { user } = useUser()
   const { success, error } = useAlert()
-  const { submit, isLoading, setIsLoading } = useRequestLand()
+  const { submit, isLoading, setIsLoading, data, setData } = useRequestLand()
   const onClickHandler = () => {
     submit()
       .then((res) => {
@@ -34,6 +34,8 @@ const RequestForm = () => {
             type: 'text',
             name: 'first_name',
             placeholder: 'نام',
+            value: data?.name,
+            onChange: (e) => setData({ name: e.target.value }),
           }}
         />
         <Input
@@ -43,6 +45,8 @@ const RequestForm = () => {
             type: 'text',
             name: 'first_name',
             placeholder: 'نام خانوادگی ',
+            value: data?.lastName,
+            onChange: (e) => setData({ lastName: e.target.value }),
           }}
         />
       </div>
@@ -54,6 +58,9 @@ const RequestForm = () => {
             type: 'text',
             name: 'first_name',
             rows: 5,
+            value: data?.description,
+            onChange: (e) =>
+              setData({ description: e.target.value }),
             placeholder:
               'توضیحات خود و دلایل خود را برای ارسال این درخواست در این جا بنویسید ',
           }}

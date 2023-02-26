@@ -1,6 +1,7 @@
 import Button from '@/components/form/button/Button'
 import Input from '@/components/form/input/Input'
 import useRegisterByPhone from '@/hooks/api-handlers/auth/useRegisterByPhone'
+import useUser from '@/hooks/api-handlers/auth/useUser'
 import useAlert from '@/hooks/notification/useAlert'
 import React from 'react'
 
@@ -14,9 +15,10 @@ const SignUpByPhone = () => {
     setStep,
     regesterComplete,
     setIsLoading,
-    resetData 
+    resetData,
   } = useRegisterByPhone()
   const { success, error } = useAlert()
+  const { setUser } = useUser()
   const onClickHandler = (step) => {
     if (step == 0) {
       sendOtp()
@@ -36,16 +38,13 @@ const SignUpByPhone = () => {
             ...res?.data?.result?.data?.user,
             token: res?.data?.result?.data?.token,
           })
-          console.log('sssss', {
-            ...res?.data?.result?.data?.user,
-            token: res?.data?.result?.data?.token,
-          })
+         
           resetData()
         })
         .catch((err) => {
           error(err.response?.data?.result?.status?.message)
           setIsLoading(false)
-          console.log('eror')
+          console.log(err)
         })
     }
   }
@@ -74,6 +73,7 @@ const SignUpByPhone = () => {
                 className: 'text-right outline-none h-14 !text-base',
                 value: data?.name,
                 placeholder: 'نام ',
+                name:'name',
                 onChange: (e) => setData({ name: e.target.value }),
               }}
             />
@@ -83,6 +83,7 @@ const SignUpByPhone = () => {
               inputProps={{
                 className: 'text-right outline-none h-14 !text-base',
                 value: data?.lastName,
+                name:'lastName',
                 placeholder: 'نام خانوادگی ',
                 onChange: (e) => setData({ lastName: e.target.value }),
               }}
@@ -97,6 +98,7 @@ const SignUpByPhone = () => {
               className: 'text-left outline-none h-14 !text-base',
               type: 'tel',
               placeholder: '55555',
+              name:'otp',
               value: data?.otp,
               onChange: (e) => setData({ otp: e.target.value }),
             }}
@@ -111,6 +113,7 @@ const SignUpByPhone = () => {
               className: 'text-left outline-none h-14 !text-base',
               type: 'password',
               placeholder: '*******',
+              name:'password',
               value: data?.password,
               onChange: (e) => setData({ password: e.target.value }),
             }}
