@@ -7,7 +7,7 @@ const Button = (props) => {
     <button
       disabled={isLoading || props?.disabled}
       {...props}
-      className={`customDisablebutton w-full flex items-center justify-center h-14 bg-primary text-white rounded-lg ${
+      className={`customDisablebutton w-full flex items-center justify-center h-14 transition-all bg-primaryLight hover:bg-primary text-white rounded-lg ${
         props?.className ?? ''
       }`}
     >

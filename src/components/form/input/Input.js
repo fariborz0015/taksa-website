@@ -1,13 +1,18 @@
+import useValidation from '@/hooks/useValidation'
 import { Icon } from '@iconify/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const Input = ({ title, inputProps, icon , labelProps}) => {
+const Input = ({ title, inputProps, icon, labelProps, rules, onError }) => {
+ 
+
   return (
     <div className="w-full">
       <label
         for="input-group-1"
         {...labelProps}
-        className={`block mb-2 text-sm font-medium text-gray-900 ${labelProps?.className??''}`}
+        className={`block mb-2 text-sm font-medium text-gray-900 ${
+          labelProps?.className ?? ''
+        }`}
       >
         {title}
       </label>
@@ -18,9 +23,10 @@ const Input = ({ title, inputProps, icon , labelProps}) => {
         <input
           type="text"
           id="input-group-1"
-         
           {...inputProps}
-          className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 p-2.5 ${inputProps?.className??''}`}
+          className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 p-2.5 ${
+            inputProps?.className ?? ''
+          }`}
         />
       </div>
     </div>

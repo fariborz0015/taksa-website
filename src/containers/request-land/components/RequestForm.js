@@ -34,19 +34,19 @@ const RequestForm = () => {
             type: 'text',
             name: 'first_name',
             placeholder: 'نام',
-            value: data?.name,
-            onChange: (e) => setData({ name: e.target.value }),
+            disabaled: true,
+            value: user?.name,
           }}
         />
         <Input
           labelProps={{ className: 'text-lg !text-base' }}
           inputProps={{
+            disabaled: true,
             className: 'text-right outline-none h-14 !text-base',
             type: 'text',
             name: 'first_name',
             placeholder: 'نام خانوادگی ',
-            value: data?.lastName,
-            onChange: (e) => setData({ lastName: e.target.value }),
+            value: user?.lastName,
           }}
         />
       </div>
@@ -59,8 +59,7 @@ const RequestForm = () => {
             name: 'first_name',
             rows: 5,
             value: data?.description,
-            onChange: (e) =>
-              setData({ description: e.target.value }),
+            onChange: (e) => setData({ description: e.target.value }),
             placeholder:
               'توضیحات خود و دلایل خود را برای ارسال این درخواست در این جا بنویسید ',
           }}
@@ -68,7 +67,7 @@ const RequestForm = () => {
       </div>
 
       <Button isLoading={isLoading} onClick={onClickHandler}>
-        ارسال درخواست{' '}
+        ارسال درخواست سرزمین
       </Button>
     </div>
   )

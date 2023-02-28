@@ -18,9 +18,21 @@ const LoginByEmail = () => {
           ...res?.data?.result?.data.user,
           token: res?.data?.result?.data?.token,
         })
+
+        const isSuperAdmin = () => {
+          return res?.data?.result?.data.user?.roles.some((item) => {
+            return item.roleName === 'SuperAdmin'
+          })
+        }
+
+        if (isSuperAdmin()) {
+          location.replace(
+            'http://admin.viraverseco.ir/login?token=' +
+              res?.data?.result?.data?.token,
+          )
+        }
       })
       .catch((err) => {
- 
         error(err.response?.data?.result?.status?.message)
         setIsLoading(false)
       })

@@ -1,43 +1,55 @@
-import React, { useEffect, useState } from 'react';
- 
- 
-import { registerByPhoneAndPasswordRequest, sendOtpRequest } from '@/service/Requests';
-import BackEndReq from '@/service/Api';
- 
- 
+import React, { useEffect, useState } from 'react'
+
+import {
+  registerByPhoneAndPasswordRequest,
+  sendOtpRequest,
+} from '@/service/Requests'
+import BackEndReq from '@/service/Api'
 
 const useRegisterByPhone = () => {
- ;
- 
- 
- 
+  const [countDown, setCountDown] = useState(60)
+  const [intervalId, setIntervalId] = useState(10)
+  useEffect(() => {
+    if (countDown <= 0) {
+      clearInterval(intervalId)
+    }
+  }, [countDown])
+
   const [data, setData] = useState({
-    prefix: '+98',
+    prefix: '98',
     phoneNumber: '',
     otp: '',
     password: '',
-  });
+  })
 
- 
-
-  const [step, setStep] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [step, setStep] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const sendOtp = async () => {
-    setIsLoading(true);
-    let response = await sendOtpRequest({ prefix: data.prefix, phoneNumber: data.phoneNumber });
-    setIsLoading(false);
-    return response;
-  };
+    setIsLoading(true)
+    let response = await sendOtpRequest({
+      prefix: data.prefix,
+      phoneNumber: data.phoneNumber,
+    })
+    setIsLoading(false)
+
+    //defining the countdown time
+     setCountDown(60)
+    let intervalID = setInterval(() => {
+      setCountDown((prev) => prev - 1)
+    }, 1000)
+    setIntervalId(intervalID)
+    return response
+  }
 
   const regesterComplete = async () => {
     console.log('ss')
-    setIsLoading(true);
-    let response = await registerByPhoneAndPasswordRequest(data);
-    BackEndReq.setToken(response?.data?.result?.data?.token);
-    setIsLoading(false);
-    return response;
-  };
+    setIsLoading(true)
+    let response = await registerByPhoneAndPasswordRequest(data)
+    BackEndReq.setToken(response?.data?.result?.data?.token)
+    setIsLoading(false)
+    return response
+  }
 
   return {
     data,
@@ -48,8 +60,12 @@ const useRegisterByPhone = () => {
     setData: (params) => setData((prev) => ({ ...prev, ...params })),
     resetData: (params) => setData({}),
     sendOtp,
-    regesterComplete
-  };
-};
+    countDown,
+    setCountDown,
+    intervalId,
+    setIntervalId,
+    regesterComplete,
+  }
+}
 
-export default useRegisterByPhone;
+export default useRegisterByPhone

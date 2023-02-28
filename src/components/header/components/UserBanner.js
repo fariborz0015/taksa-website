@@ -1,7 +1,9 @@
 import useLogout from '@/hooks/api-handlers/auth/useLogout'
 import useUser from '@/hooks/api-handlers/auth/useUser'
+import { roleCheck } from '@/utils/helper'
 import useOutsideClick from '@/utils/useOutsideClick'
 import { Icon } from '@iconify/react'
+import Cookies from 'js-cookie'
 import React from 'react'
 
 const UserBanner = () => {
@@ -21,11 +23,13 @@ const UserBanner = () => {
       {open ? (
         <div className="dropdown " ref={reference}>
           {/* number section */}
+
           <div className="p-2">
             <div className="w-full h-14 just-center rounded-lg flex justify-center items-center bg-primary ">
-              {user?.phone?.phoneNumber.length > 0 ? (
+              {user?.phone?.phoneNumber.length > 0 ||
+              user?.phoneData?.phoneNumber.length > 0 ? (
                 <span className="text-white pt-2 text-lg">
-                  {user?.phone?.phoneNumber}
+                  0{user?.phone?.phoneNumber ?? user?.phoneData?.phoneNumber}
                 </span>
               ) : (
                 <span className="text-white pt-2 text-sm">{user?.email}</span>
@@ -46,7 +50,23 @@ const UserBanner = () => {
               <span>حساب کاربری</span>
             </li>
             <button
-              disabled={true}
+              onClick={() => {
+                window.location.href =
+                  'http://admin.viraverseco.ir/login?token=' +
+                  Cookies.get('token')
+              }}
+              disabled={
+                !(
+                  roleCheck({
+                    roles: user.roles,
+                    roleToCheck: 'SuperAdmin',
+                  }) ||
+                  roleCheck({
+                    roles: user.roles,
+                    roleToCheck: 'LandAdmin',
+                  })
+                )
+              }
               className="p-3 customDisablebutton w-full text-sm flex rtl items-center
             cursor-pointer hover:bg-publicGray
             hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all

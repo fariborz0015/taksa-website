@@ -7,6 +7,14 @@ import BackEndReq from '@/service/Api';
  
 
 const useRegisterByEmail = () => { 
+
+    const [countDown, setCountDown] = useState(30)
+  const [intervalId, setIntervalId] = useState(10)
+  useEffect(() => {
+    if (countDown <= 0) {
+      clearInterval(intervalId)
+    }
+  }, [countDown])
   const [data, setData] = useState({
  
     email: '',
@@ -23,11 +31,17 @@ const useRegisterByEmail = () => {
     setIsLoading(true);
     let response = await sendOtpRequestToEmail({ prefix: data.prefix, email: data.email });
     setIsLoading(false);
+       //defining the countdown time
+     setCountDown(30)
+    let intervalID = setInterval(() => {
+      setCountDown((prev) => prev - 1)
+    }, 1000)
+    setIntervalId(intervalID)
     return response;
   };
 
   const regesterComplete = async () => {
-    console.log('ss')
+
     setIsLoading(true);
     let response = await registerByEmailAndPasswordRequest(data);
     BackEndReq.setToken(response?.data?.result?.data?.token);
@@ -47,6 +61,10 @@ const useRegisterByEmail = () => {
       setData(params)
     },
     sendOtp,
+    countDown,
+    setCountDown,
+    intervalId,
+    setIntervalId,
     regesterComplete
   };
 };

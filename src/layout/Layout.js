@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const router = useRouter()
   const { user } = useUser()
   useEffect(() => {
-    if (router.asPath.search('login') > 0 && user.uuid) {
+    if (router?.asPath?.search('login') > 0 && user?.uuid) {
       router.push(window.location.origin + '/')
     }
   }, [user, router])
