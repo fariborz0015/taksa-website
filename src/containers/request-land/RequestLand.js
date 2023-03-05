@@ -13,7 +13,7 @@ const RequestLand = () => {
       setLoginModal(false)
     }
   }, [user])
-  
+
   return (
     <div className="w-full h-full container-lg mt-40">
       <h1 className="text-xl font-bold  ">درخواست نمایشگاه</h1>
@@ -26,21 +26,77 @@ const RequestLand = () => {
 
       <div className="max-w-3xl mx-auto mt-40  ">
         {user?.uuid ? (
-          <RequestForm />
+          user.landRequestStatus ? (
+            user.landRequestStatus == 'send' ? (
+              <div
+                class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"
+                role="alert"
+              >
+                <p class="font-bold">
+                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
+                </p>
+                <p class="text-sm">
+                  وضعیت درخواست شما در حالت <b> ارسال شده </b> قرار دارد
+                </p>
+              </div>
+            ) : user.landRequestStatus == 'seen' ? (
+              <div
+                class="bg-amber-100 border-t border-b border-amber-500 text-amber-700 px-4 py-3"
+                role="alert"
+              >
+                <p class="font-bold">
+                  {' '}
+                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
+                </p>
+                <p class="text-sm">
+                  وضعیت درخواست شما در حالت <b> دیده شده </b> قرار دارد
+                </p>
+              </div>
+            ) : user.landRequestStatus == 'accept' ? (
+              <div
+                class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3"
+                role="alert"
+              >
+                <p class="font-bold">
+                  {' '}
+                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
+                </p>
+                <p class="text-sm">
+                  وضعیت درخواست شما در حالت <b> پذیرفته شده </b> قرار دارد
+                </p>
+              </div>
+            ) : (
+              <div
+                class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3"
+                role="alert"
+              >
+                <p class="font-bold">
+                  {' '}
+                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
+                </p>
+                <p class="text-sm">
+                  وضعیت درخواست شما در حالت <b>رد شده </b> قرار دارد
+                </p>
+              </div>
+            )
+          ) : (
+            <RequestForm />
+          )
         ) : (
           <Button onClick={() => setLoginModal(true)}>
             برای ورود کلیک کنید
           </Button>
         )}
       </div>
-  
-        <Modal options={{
-          show:loginModal,
-          setShow:setLoginModal,
-        }}>
-          <Auth />
-        </Modal>
- 
+
+      <Modal
+        options={{
+          show: loginModal,
+          setShow: setLoginModal,
+        }}
+      >
+        <Auth />
+      </Modal>
     </div>
   )
 }

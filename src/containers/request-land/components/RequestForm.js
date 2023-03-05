@@ -8,13 +8,14 @@ import useAlert from '@/hooks/notification/useAlert'
 import React, { useState } from 'react'
 
 const RequestForm = () => {
-  const { user } = useUser()
+  const { user, setUser } = useUser()
   const { success, error } = useAlert()
   const { submit, isLoading, setIsLoading, data, setData } = useRequestLand()
   const onClickHandler = () => {
     submit()
       .then((res) => {
         success('درخواست شما ثبت شد ')
+        setUser({ ...user, landRequestStatus: 'send' })
       })
       .catch((err) => {
         error(err?.response?.data?.result?.status?.message)

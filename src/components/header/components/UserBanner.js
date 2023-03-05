@@ -1,15 +1,68 @@
 import useLogout from '@/hooks/api-handlers/auth/useLogout'
 import useUser from '@/hooks/api-handlers/auth/useUser'
+import useAlert from '@/hooks/notification/useAlert'
+import { getProfile } from '@/service/Requests'
 import { roleCheck } from '@/utils/helper'
 import useOutsideClick from '@/utils/useOutsideClick'
 import { Icon } from '@iconify/react'
 import Cookies from 'js-cookie'
-import React from 'react'
+import React, { useState } from 'react'
 
 const UserBanner = () => {
-  const { user } = useUser()
+  const { user, setUser } = useUser()
   const { open, reference, setOpen } = useOutsideClick()
   const logout = useLogout()
+  const [isLoading, setLoading] = useState(false)
+  const { error, info } = useAlert()
+  const dashboardHandler = () => {
+    setLoading(true)
+    getProfile()
+      .then((res) => {
+        setLoading(false)
+        setUser(res?.data?.result?.data?.user)
+        let newUser = res?.data?.result?.data?.user
+        if (
+          roleCheck({
+            roles: newUser.roles,
+            roleToCheck: 'SuperAdmin',
+          }) ||
+          roleCheck({
+            roles: newUser.roles,
+            roleToCheck: 'LandAdmin',
+          })
+        ) {
+          window.location.href =
+            'http://admin.viraverseco.ir/login?token=' + Cookies.get('token')
+        } else {
+          if (newUser.landRequestStatus) {
+            if (newUser.landRequestStatus == 'send') {
+              info(
+                'کاربر گرامی درخواست شما ثبت شده و در وضعیت "ارسال شده" است لطفا برای تغییر وضعیت از سمت مدیران منتظر بمانید ',
+              )
+            } else if (newUser.landRequestStatus == 'seen') {
+              info(
+                'کاربر گرامی درخواست شما ثبت شده و در وضعیت "دیده شده" است لطفا برای تغییر وضعیت از سمت مدیران منتظر بمانید ',
+              )
+            } else if (newUser.landRequestStatus == 'reject') {
+              error(
+                'کاربر گرامی  متاسفانه درخواست شما از سمت مدیران رد شده است ',
+              )
+            }
+          } else {
+            error(
+              'کاربر گرامی ! شما دارای لند نمی باشید - لطفا از قسمت درخواست لند درخواست خود را ثبت کنید ',
+            )
+          }
+        }
+      })
+      .catch((err) => {
+        error(err.response?.data.status?.message)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
   return (
     <div className="w-fit relative ltr">
       <button
@@ -50,32 +103,23 @@ const UserBanner = () => {
               <span>حساب کاربری</span>
             </li>
             <button
-              onClick={() => {
-                window.location.href =
-                  'http://admin.viraverseco.ir/login?token=' +
-                  Cookies.get('token')
-              }}
-              disabled={
-                !(
-                  roleCheck({
-                    roles: user.roles,
-                    roleToCheck: 'SuperAdmin',
-                  }) ||
-                  roleCheck({
-                    roles: user.roles,
-                    roleToCheck: 'LandAdmin',
-                  })
-                )
-              }
+              onClick={dashboardHandler}
+              disabled={isLoading}
               className="p-3 customDisablebutton w-full text-sm flex rtl items-center
             cursor-pointer hover:bg-publicGray
             hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all
             "
             >
-              <span className="ml-2">
-                <Icon icon="radix-icons:dashboard" s width={20} />
-              </span>
-              <span> داشبورد نمایشگاه </span>
+              {isLoading ? (
+                <Icon icon={'eos-icons:loading'} width={28} />
+              ) : (
+                <>
+                  <span className="ml-2">
+                    <Icon icon="radix-icons:dashboard" s width={20} />
+                  </span>
+                  <span> داشبورد نمایشگاه </span>
+                </>
+              )}
             </button>
 
             <li
