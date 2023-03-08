@@ -26,6 +26,11 @@ export const getUserListRequest = async (params) => {
     params:params
   })
 }
+export const getLandListRequest = async (params) => {
+  return await BackEndReq.get(`app/land/list`, {
+    params:params
+  })
+}
 export const getProfile = async () => {
   return await BackEndReq.get(`app/auth/user`)
 }

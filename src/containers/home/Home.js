@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import React from 'react'
 
-const Home = () => {
+const Home = ({ lands }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand()
   const { success, error } = useAlert()
   const LANDSlIST = [
@@ -25,15 +25,7 @@ const Home = () => {
       img: '/assets/img/keshavarzi.png',
       link: 'http://185.18.214.5/',
     },
-    {
-      id: '1',
-      title: ' نمایشگاه متاورس        ',
-      brief:
-        ' شرکتت ویراورس ضمن آرزوی طول عمر برای این استاد بی بدیل، افتخار دارد که آثار ارزشمند ایشان را برای نخستین بار در دنیای متاورس در معرض دید عموم قرار داده است. ',
-      img: '/assets/img/sabz.png',
-      link: 'http://185.18.214.5/',
-    },
-  ]
+  ].map((item, index) => ({ ...item, ...lands[index] }))
   return (
     <div className=" w-full ">
       <div className="  w-full relative  overflow-hidden  ">
