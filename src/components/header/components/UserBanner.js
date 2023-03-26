@@ -122,7 +122,7 @@ const UserBanner = () => {
               )}
             </button>
 
-            <li
+            {/* <li
               className="
               p-3 text-sm flex
               rtl items-center
@@ -135,7 +135,7 @@ const UserBanner = () => {
                 <Icon icon="carbon:intent-request-upgrade" width={20} />
               </span>
               <span>درخواست های من</span>
-            </li>
+            </li> */}
 
             <button
               onClick={logout.submit}
