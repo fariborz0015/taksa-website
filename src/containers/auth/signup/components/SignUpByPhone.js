@@ -4,9 +4,35 @@ import useRegisterByPhone from '@/hooks/api-handlers/auth/useRegisterByPhone'
 import useUser from '@/hooks/api-handlers/auth/useUser'
 import useAlert from '@/hooks/notification/useAlert'
 import useValidation from '@/hooks/useValidation'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import * as Yup from 'yup'
+import * as yup from 'yup'
+
+const SchemasByStepsp = {
+  0: yup.object().shape({
+    phoneNumber: yup
+      .string()
+      .matches(/^9\d{9}$/, 'شماره موبایل معتبر نمی باشد ')
+      .required('شماره موبایل اجباری می باشد '),
+  }),
+
+  1: yup.object().shape({
+    otp: yup
+      .string()
+      .min(5, 'کد تایید باید برابر با 5 کاراکتر باشد ')
+      .max(5, 'کد تایید باید برابر با 5 کاراکتر باشد ')
+      .required('شماره موبایل اجباری می باشد '),
+  }),
+  2: yup.object().shape({
+    name: yup.string().required('  نام اجباری می باشد '),
+    lastName: yup.string().required('  نام خانوادگی اجباری می باشد '),
+    password: yup
+      .string()
+      .required('وارد کردن کلمه عبور اجباری است ')
+      .min(8, 'کلمه عبور باید بیشتر از 8 کارکاتر باشد '),
+  }),
+}
+
 const SignUpByPhone = () => {
   const {
     setData,
@@ -22,6 +48,12 @@ const SignUpByPhone = () => {
   } = useRegisterByPhone()
   const { success, error } = useAlert()
   const { setUser } = useUser()
+  const [validationStatus, setValidationStatus] = useState(false)
+  const { formData, errors, handleChange, validate } = useValidation(
+    data,
+    SchemasByStepsp[0],
+  )
+
   const sendOtpHandler = () => {
     sendOtp()
       .then((res) => {
@@ -58,20 +90,35 @@ const SignUpByPhone = () => {
     }
   }
 
+  useEffect(() => {
+    async function makeAsync() {
+      const isValid = await validate({
+        schema: SchemasByStepsp[step] ?? {},
+      })
+      setValidationStatus(isValid)
+    }
+    makeAsync()
+  }, [data, step])
+
   return (
     <div>
       {step == 0 ? (
         <Input
+          error={errors?.phoneNumber}
           title="موبایل "
           labelProps={{ className: 'text-lg !text-base' }}
           icon={'material-symbols:phone-android-outline-sharp'}
           inputProps={{
             className: 'text-left outline-none h-14 !text-base',
             type: 'tel',
-            placeholder: '09336186568',
-            maxLength: '10',
-            value: data?.phoneNumber.replace('0', ''),
-            onChange: (e) => setData({ phoneNumber: e.target.value }),
+            placeholder: '9336186568',
+            maxLength: 10,
+            name: 'phoneNumber',
+            value: data?.phoneNumber,
+            onChange: (e) => {
+              handleChange(e)
+              setData({ phoneNumber: e.target.value.replace(/^0/, '') })
+            },
           }}
         />
       ) : step == 1 ? (
@@ -80,6 +127,7 @@ const SignUpByPhone = () => {
             title="کد تایید "
             labelProps={{ className: 'text-lg !text-base' }}
             icon={'material-symbols:sms-outline-rounded'}
+            error={errors?.otp}
             inputProps={{
               className: 'text-left outline-none h-14 !text-base ',
               type: 'tel',
@@ -87,7 +135,10 @@ const SignUpByPhone = () => {
               name: 'otp',
               maxLength: '5',
               value: data?.otp,
-              onChange: (e) => setData({ otp: e.target.value }),
+              onChange: (e) => {
+                handleChange(e)
+                setData({ otp: e.target.value })
+              },
             }}
           />
 
@@ -111,23 +162,31 @@ const SignUpByPhone = () => {
               <Input
                 title="نام   "
                 labelProps={{ className: 'text-lg !text-base' }}
+                error={errors.name}
                 inputProps={{
                   className: 'text-right outline-none h-14 !text-base',
                   value: data?.name,
                   placeholder: 'نام ',
                   name: 'name',
-                  onChange: (e) => setData({ name: e.target.value }),
+                  onChange: (e) => {
+                    handleChange(e)
+                    setData({ name: e.target.value })
+                  },
                 }}
               />
               <Input
                 title="نام خانوادگی "
                 labelProps={{ className: 'text-lg !text-base' }}
+                error={errors.lastName}
                 inputProps={{
                   className: 'text-right outline-none h-14 !text-base',
                   value: data?.lastName,
                   name: 'lastName',
                   placeholder: 'نام خانوادگی ',
-                  onChange: (e) => setData({ lastName: e.target.value }),
+                  onChange: (e) => {
+                    handleChange(e)
+                    setData({ lastName: e.target.value })
+                  },
                 }}
               />
             </div>
@@ -135,6 +194,7 @@ const SignUpByPhone = () => {
             <Input
               value={data?.password}
               onChange={(e) => setData({ password: e.target.value })}
+              error={errors.password}
               title="کلمه عبور "
               labelProps={{ className: 'text-lg !text-base' }}
               icon={'material-symbols:key-outline-rounded'}
@@ -144,7 +204,10 @@ const SignUpByPhone = () => {
                 placeholder: '*******',
                 name: 'password',
                 value: data?.password,
-                onChange: (e) => setData({ password: e.target.value }),
+                onChange: (e) => {
+                  handleChange(e)
+                  setData({ password: e.target.value })
+                },
               }}
             />
           </>
@@ -152,6 +215,7 @@ const SignUpByPhone = () => {
       )}
       <div className="w-full flex space-x-2 space-x-reverse ">
         <Button
+          disabled={!validationStatus}
           isLoading={isLoading}
           title={step == 0 ? ' تایید ' : 'تایید و ثبت نام '}
           onClick={() => onClickHandler(step)}

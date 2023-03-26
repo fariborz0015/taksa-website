@@ -83,7 +83,7 @@ const RequestLand = () => {
             <RequestForm />
           )
         ) : (
-          <Button onClick={() => setLoginModal(true)}>
+          <Button className="max-w-md mx-auto" onClick={() => setLoginModal(true)}>
             برای ورود کلیک کنید
           </Button>
         )}
