@@ -28,7 +28,7 @@ const SchemasByStepsp = {
     password: yup
       .string()
       .required('وارد کردن کلمه عبور اجباری است ')
-      .min(8, 'کلمه عبور باید بیشتر از 8 کارکاتر باشد '),
+      .min(6, 'کلمه عبور باید بیشتر از 6 کارکاتر باشد '),
   }),
 }
 const SignUpByPhone = () => {
