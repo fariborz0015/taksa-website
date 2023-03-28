@@ -7,7 +7,6 @@ import useValidation from '@/hooks/useValidation'
 import React, { useEffect, useState } from 'react'
 import * as yup from 'yup'
 
- 
 const validationSchema = yup.object().shape({
   phoneNumber: yup
     .string()
@@ -54,7 +53,7 @@ const LoginByPhone = () => {
 
         if (isSuperAdmin()) {
           location.replace(
-            'http://admin.viraverseco.ir/login?token=' +
+            'http://185.18.214.5:3001/#/login?token=' +
               res?.data?.result?.data?.token,
           )
         }
@@ -68,7 +67,6 @@ const LoginByPhone = () => {
     <div className="w-full">
       <Input
         title="موبایل "
-        
         labelProps={{ className: 'text-lg !text-base' }}
         icon={'material-symbols:phone-android-outline-sharp'}
         error={errors?.phoneNumber}
