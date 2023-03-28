@@ -47,3 +47,7 @@ a {
 .customDisablebutton[disabled] {
   @apply cursor-not-allowed !bg-gray-400 !text-white;
 }
+
+.swiper-button-next,.swiper-button-prev{
+  @apply !text-primary
+}
