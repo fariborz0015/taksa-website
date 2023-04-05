@@ -53,7 +53,7 @@ const LoginByPhone = () => {
 
         if (isSuperAdmin()) {
           location.replace(
-            'http://185.18.214.5:3001/#/login?token=' +
+            'http://185.18.214.5:3001/login?token=' +
               res?.data?.result?.data?.token,
           )
         }

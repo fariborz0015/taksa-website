@@ -32,7 +32,7 @@ const UserBanner = () => {
           })
         ) {
           window.location.href =
-            'http://185.18.214.5:3001/#/login?token=' + Cookies.get('token')
+            'http://185.18.214.5:3001/login?token=' + Cookies.get('token')
         } else {
           if (newUser.landRequestStatus) {
             if (newUser.landRequestStatus == 'send') {
