@@ -102,7 +102,17 @@ const UserBanner = () => {
               </span>
               <span>حساب کاربری</span>
             </li>
-            <button
+
+            {
+              (  roleCheck({
+                roles: user.roles,
+                roleToCheck: 'SuperAdmin',
+              }) ||
+              roleCheck({
+                roles: user.roles,
+                roleToCheck: 'LandAdmin',
+              })) &&
+              <button
               onClick={dashboardHandler}
               disabled={isLoading}
               className="p-3 customDisablebutton w-full text-sm flex rtl items-center
@@ -121,6 +131,9 @@ const UserBanner = () => {
                 </>
               )}
             </button>
+
+            }
+       
 
             {/* <li
               className="
