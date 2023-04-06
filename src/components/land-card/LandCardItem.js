@@ -8,25 +8,33 @@ import 'swiper/css/navigation'
 import { Navigation } from 'swiper'
 import useUser from '@/hooks/api-handlers/auth/useUser'
 import { landLinkMaker } from '@/utils/helper'
+import VideoPlayer from '@/components/video-player/VideoPlayer'
 const LandCardItem = ({ item }) => {
   const { user } = useUser()
- 
+
   return (
-    <a href={landLinkMaker({ token: user.token, landUuid: item?.uuid })} target="_blank">
-      <div className="w-full rounded-xl bg-white min-h-[250px] ">
+    <a
+      href={landLinkMaker({ token: user.token, landUuid: item?.uuid })}
+      target="_blank"
+    >
+      <div className="w-full rounded-xl bg-white  ">
         <div className="mx-auto rounded-t-xl    overflow-hidden  flex justify-center items-center   bg-[#e8f3fd] ">
-          <Swiper modules={[Navigation]} navigation>
+          <Swiper modules={[Navigation]} navigation autoHeight>
             {item?.media?.map((medi) => (
               <SwiperSlide>
                 {medi.type == 'image' ? (
-                  <img src={ApiConstants?.mediaBaseUrl + medi?.uuid} alt="" />
-                ) : (
-                  <video
+                  <img
                     src={ApiConstants?.mediaBaseUrl + medi?.uuid}
-                    className="min-h-[411px] bg-black"
-                    height="100%"
+                    className="h-[231px]"
+                    alt=""
+                  />
+                ) : (
+                  <VideoPlayer
+                    src={ApiConstants?.mediaBaseUrl + medi?.uuid}
+                    className="  bg-black"
+                    height={'230px'}
                     controls
-                  ></video>
+                  />
                 )}
               </SwiperSlide>
             ))}
