@@ -4,6 +4,7 @@ import useLoginByEmail from '@/hooks/api-handlers/auth/useLoginByEmail'
 import useUser from '@/hooks/api-handlers/auth/useUser'
 import useAlert from '@/hooks/notification/useAlert'
 import useValidation from '@/hooks/useValidation'
+import { loginLinkMaker } from '@/utils/helper'
 import React, { useEffect, useState } from 'react'
 import * as yup from 'yup'
 const validationSchema = yup.object().shape({
@@ -52,8 +53,7 @@ const LoginByEmail = () => {
 
         if (isSuperAdmin()) {
           location.replace(
-            'http://185.18.214.5:3001/#/login?token=' +
-              res?.data?.result?.data?.token,
+            loginLinkMaker({ token: res?.data?.result?.data?.token }),
           )
         }
       })

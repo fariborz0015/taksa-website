@@ -2,7 +2,7 @@ import useLogout from '@/hooks/api-handlers/auth/useLogout'
 import useUser from '@/hooks/api-handlers/auth/useUser'
 import useAlert from '@/hooks/notification/useAlert'
 import { getProfile } from '@/service/Requests'
-import { roleCheck } from '@/utils/helper'
+import { loginLinkMaker, roleCheck } from '@/utils/helper'
 import useOutsideClick from '@/utils/useOutsideClick'
 import { Icon } from '@iconify/react'
 import Cookies from 'js-cookie'
@@ -31,8 +31,7 @@ const UserBanner = () => {
             roleToCheck: 'LandAdmin',
           })
         ) {
-          window.location.href =
-            'http://185.18.214.5:3001/login?token=' + Cookies.get('token')
+          window.location.href = loginLinkMaker({ token: Cookies.get('token') })
         } else {
           if (newUser.landRequestStatus) {
             if (newUser.landRequestStatus == 'send') {
@@ -103,37 +102,34 @@ const UserBanner = () => {
               <span>حساب کاربری</span>
             </li>
 
-            {
-              (  roleCheck({
-                roles: user.roles,
-                roleToCheck: 'SuperAdmin',
-              }) ||
+            {(roleCheck({
+              roles: user.roles,
+              roleToCheck: 'SuperAdmin',
+            }) ||
               roleCheck({
                 roles: user.roles,
                 roleToCheck: 'LandAdmin',
-              })) &&
+              })) && (
               <button
-              onClick={dashboardHandler}
-              disabled={isLoading}
-              className="p-3 customDisablebutton w-full text-sm flex rtl items-center
+                onClick={dashboardHandler}
+                disabled={isLoading}
+                className="p-3 customDisablebutton w-full text-sm flex rtl items-center
             cursor-pointer hover:bg-publicGray
             hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all
             "
-            >
-              {isLoading ? (
-                <Icon icon={'eos-icons:loading'} width={28} />
-              ) : (
-                <>
-                  <span className="ml-2">
-                    <Icon icon="radix-icons:dashboard" s width={20} />
-                  </span>
-                  <span> داشبورد نمایشگاه </span>
-                </>
-              )}
-            </button>
-
-            }
-       
+              >
+                {isLoading ? (
+                  <Icon icon={'eos-icons:loading'} width={28} />
+                ) : (
+                  <>
+                    <span className="ml-2">
+                      <Icon icon="radix-icons:dashboard" s width={20} />
+                    </span>
+                    <span> داشبورد نمایشگاه </span>
+                  </>
+                )}
+              </button>
+            )}
 
             {/* <li
               className="

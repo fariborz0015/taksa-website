@@ -10,3 +10,9 @@ export const landLinkMaker = (params = { token, landUuid }) => {
   const base64 = btoa(json)
   return ApiConstants.baseUrl + '/land?utm=' + base64
 }
+
+export const loginLinkMaker = (params = { token }) => {
+  const json = JSON.stringify(params)
+  const base64 = btoa(json)
+  return ApiConstants.dashboardUrl + 'login?utm=' + base64
+}
