@@ -46,13 +46,13 @@ const LoginByPhone = () => {
           ...res?.data?.result?.data.user,
           token: res?.data?.result?.data?.token,
         })
-        const isSuperAdmin = () => {
+        const isAdmin = () => {
           return res?.data?.result?.data.user?.roles.some((item) => {
-            return item.roleName === 'SuperAdmin'
+            return item.roleName === 'SuperAdmin' ||item.roleName === 'LandAdmin'
           })
         }
 
-        if (isSuperAdmin()) {
+        if (isAdmin()) {
           location.replace(
             loginLinkMaker({ token: res?.data?.result?.data?.token }),
           )
