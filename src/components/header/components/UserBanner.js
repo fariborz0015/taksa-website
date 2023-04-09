@@ -90,7 +90,7 @@ const UserBanner = () => {
           </div>
 
           <ul className="w-full mt-2 text-black ">
-            <li
+            {/* <li
               className="p-3 text-sm flex rtl items-center
             cursor-pointer hover:bg-publicGray
             hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all
@@ -100,7 +100,7 @@ const UserBanner = () => {
                 <Icon icon="ph:user" width={20} />
               </span>
               <span>حساب کاربری</span>
-            </li>
+            </li> */}
 
             {(roleCheck({
               roles: user.roles,
