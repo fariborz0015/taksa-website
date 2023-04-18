@@ -12,9 +12,9 @@ const Header = () => {
     <div className="w-full py-5">
       <div className="container-lg">
         <nav className="w-full h-full flex ">
-          <Link href="/">
-            <div className="pt-1  cursor-pointer">
-              <img src="/assets/img/logo.png" alt="" />
+          <Link href="/" className='flex items-center' >
+            <div className="pt-1 max-w-[200px] h-[40px]   cursor-pointer">
+              <img src="/assets/img/logo.png" alt="" className="w-full h-full " />
             </div>
           </Link>
           <div className="flex-1 flex px-6 items-center h-full">
