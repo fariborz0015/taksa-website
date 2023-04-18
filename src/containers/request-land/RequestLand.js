@@ -15,75 +15,99 @@ const RequestLand = () => {
   }, [user])
 
   return (
-    <div className="w-full h-full container-lg mt-40">
-      <h1 className="text-xl font-bold  ">درخواست نمایشگاه</h1>
-      <p>
-        کاربر گرامی برای دریافت نمایشگاه شما می بایست فرم زیر را پر کرده و ارسال
-        کنید تا کاکنان ما در اسرع وقت بتوانند سریع تر با برررسی اطلاعات شما این
-        دسترسی را به شما اعطا کنند و شما بتوانید از نمایشگاه مجازی خود استفاده
-        کنید
-      </p>
+    <div className="w-full bg-white rounded-xl py-10 px-6 my-10 container-lg  flex flex-col justify-between   ">
+      {user?.uuid ? (
+        !user.landRequestStatus ? (
+          <div className="w-full text-black   px-4">
+            <h1 className="text-xl font-bold w-full  text-right">
+              درخواست سرزمین
+            </h1>
+            <p className='text-caption mt-2'>
+              لطفا اطلاعات زیر را تکمیل و ارسال نمایید. پس از بررسی و تایید
+              درسامانه، سرزمین نمایشگاهی شما به طور خودکار ایجاد شده و دسترسی
+              شما به پنل کنترل آن باز می شود
+            </p>
+          </div>
+        ) : (
+          <div className="w-full   mb-4 ">
+            <h1 className="text-xl font-bold w-full  text-right text-black">
+              نتیجه درخواست سرزمین :
+            </h1>
+          </div>
+        )
+      ) : (
+        <div className="w-full   mb-4  ">
+          <h1 className="text-xl font-bold w-full  text-right text-black">
+            برای درخواست سرزمین لطفا وارد شوید
+          </h1>
+        </div>
+      )}
 
-      <div className="max-w-3xl mx-auto mt-40  ">
+      <div className="w-full  mx-auto px-4 items-center flex-1  flex  justify-center ">
         {user?.uuid ? (
           user.landRequestStatus ? (
-            user.landRequestStatus == 'send' ? (
-              <div
-                class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"
-                role="alert"
-              >
-                <p class="font-bold">
-                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
-                </p>
-                <p class="text-sm">
-                  وضعیت درخواست شما در حالت <b> ارسال شده </b> قرار دارد
-                </p>
-              </div>
-            ) : user.landRequestStatus == 'seen' ? (
-              <div
-                class="bg-amber-100 border-t border-b border-amber-500 text-amber-700 px-4 py-3"
-                role="alert"
-              >
-                <p class="font-bold">
-                  {' '}
-                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
-                </p>
-                <p class="text-sm">
-                  وضعیت درخواست شما در حالت <b> دیده شده </b> قرار دارد
-                </p>
-              </div>
-            ) : user.landRequestStatus == 'accept' ? (
-              <div
-                class="bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3"
-                role="alert"
-              >
-                <p class="font-bold">
-                  {' '}
-                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
-                </p>
-                <p class="text-sm">
-                  وضعیت درخواست شما در حالت <b> پذیرفته شده </b> قرار دارد
-                </p>
-              </div>
-            ) : (
-              <div
-                class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3"
-                role="alert"
-              >
-                <p class="font-bold">
-                  {' '}
-                  درخواست شما ارسال شده لطفا منتظر تغییر وضعیت درخواست خود باشید{' '}
-                </p>
-                <p class="text-sm">
-                  وضعیت درخواست شما در حالت <b>رد شده </b> قرار دارد
-                </p>
-              </div>
-            )
+            <div className="w-full  ">
+              <p class="text-caption pb-4">
+                درخواست سرزمین شما ارسال شده و منتظر تایید ادمین سامانه می باشد.
+                در صورتی که بیش از 24 ساعت از درخواست شما گذشته است برای پی گیری
+                می توانید با پشتیبانی تماس حاصل فرمایید.
+              </p>
+              {user.landRequestStatus == 'send' ? (
+                <div
+                  class="bg-blue-100 w-full border rounded-xl h-fit  border-blue-500 text-blue-700 px-4 py-3"
+                  role="alert"
+                >
+                  <p class="font-bold text-lg"> توجه !</p>
+                  <p class="text-sm mt-2">
+                    وضعیت درخواست شما در حالت{' '}
+                    <b className="font-extrabold"> ارسال شده </b> قرار دارد
+                  </p>
+                </div>
+              ) : user.landRequestStatus == 'seen' ? (
+                <div
+                  class="bg-amber-100  w-full border rounded-xl h-fit border-amber-500 text-amber-700 px-4 py-3"
+                  role="alert"
+                >
+                  <p class="font-bold text-lg"> توجه !</p>
+                  <p class="text-sm mt-2">
+                    وضعیت درخواست شما در حالت{' '}
+                    <b className="font-extrabold"> دیده شده </b> قرار دارد
+                  </p>
+                </div>
+              ) : user.landRequestStatus == 'accept' ? (
+                <div
+                  class="bg-green-100 w-full border rounded-xl h-fit border-green-500 text-green-700 px-4 py-3"
+                  role="alert"
+                >
+                  <p class="font-bold text-lg"> تبریک !</p>
+                  <p class="text-sm mt-2">
+                    وضعیت درخواست شما در حالت{' '}
+                    <b className="font-extrabold"> پذیرفته شده </b> قرار دارد
+                  </p>
+                </div>
+              ) : (
+                <div
+                  class="bg-red-100 w-full border rounded-xl h-fit border-red-500 text-red-700 px-4 py-3"
+                  role="alert"
+                >
+                  <p class="font-bold text-lg"> توجه !</p>
+                  <p class="text-sm mt-2">
+                    وضعیت درخواست شما در حالت{' '}
+                    <b className="font-extrabold"> رد شده </b> قرار دارد
+                  </p>
+                </div>
+              )}
+            </div>
           ) : (
-            <RequestForm />
+            <div class="w-full max-w-4xl my-10 border rounded-xl ">
+              <RequestForm />
+            </div>
           )
         ) : (
-          <Button className="max-w-md mx-auto" onClick={() => setLoginModal(true)}>
+          <Button
+            className="max-w-md mx-auto"
+            onClick={() => setLoginModal(true)}
+          >
             برای ورود کلیک کنید
           </Button>
         )}

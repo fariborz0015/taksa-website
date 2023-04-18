@@ -24,8 +24,8 @@ const RequestForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl p-4 text-black">
-      <h1 className="text-xl font-bold pr-4">فرم درخواست </h1>
+    <div className="bg-white shadow-lg  rounded-xl p-4 text-black">
+  
 
       <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-4 ">
         <Input

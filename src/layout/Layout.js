@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
     }
   }, [user, router])
   return (
-    <div className="w-full h-full flex flex-col justify-between bg-[#000857]">
+    <div className="w-full min-h-full flex flex-col justify-between  bg-[#000857]">
       {user == null ? (
         <LodaingPage />
       ) : (
