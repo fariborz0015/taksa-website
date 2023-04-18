@@ -5,12 +5,32 @@ import useRequestLand from '@/hooks/api-handlers/land/useRequestLand'
 import useAlert from '@/hooks/notification/useAlert'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Home = ({ lands }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand()
   const { success, error } = useAlert()
+  const movmentEl = useRef(null)
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const x = event.clientX
+      const y = event.clientY
+      const element = movmentEl.current
+      if (element) {
+        const width = element.offsetWidth
+        const height = element.offsetHeight
+        const dx =(y - height / 2) / height
+        const dy =  (x - width / 2) / width
+        element.style.backgroundPosition = `${dx * 5}px ${dy * 5}px`
+      }
+    }
 
+    document.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
   return (
     <div className=" w-full ">
       <div className="  w-full relative  overflow-hidden  ">
@@ -19,9 +39,15 @@ const Home = ({ lands }) => {
         </div>
         {/* hello slider */}
         <div className="w-full  z-10 flex relative container-lg py-20">
-          <div className="w-1/2">
-            <img src="/assets/img/tuch-ai.png" alt="" />
-          </div>
+          <div
+            ref={movmentEl}
+            className="w-1/2 bg-[url('/assets/img/tuch-ai.png')] bg-cover bg-100 "
+            style={{
+              backgroundSize: '83%',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
+          ></div>
           <div className="w-1/2 flex justify-center items-center">
             <div className="sm:max-w-xl">
               <h1 className="text-4xl text-white font-bold">
