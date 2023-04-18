@@ -34,7 +34,7 @@ const Home = ({ lands }) => {
   return (
     <div className=" w-full ">
       <div className="  w-full relative  overflow-hidden  ">
-        <div className="absolute top-0 left-0  w-full h-full animate-pulse ">
+        <div className="absolute top-0 left-0 flex justify-center items-center  w-full h-full animate-pulse ">
           <img src="/assets/img/animate-star.png" height="100%" alt="" />
         </div>
         {/* hello slider */}
