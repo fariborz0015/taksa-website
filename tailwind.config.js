@@ -8,10 +8,13 @@ const customColors = {
   primary: '#0d6efd',
   primaryLowDark: '#060542',
   primaryDark: '#010032',
-  caption:'#666666'
+  caption: '#666666',
 }
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}',    "./node_modules/tw-elements/dist/js/**/*.js"],
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/tw-elements/dist/js/**/*.js',
+  ],
   theme: {
     extend: {
       colors: {
@@ -54,6 +57,16 @@ module.exports = {
         18: '4.5rem',
         74: '18.5rem',
       },
+
+      animation: {
+        shimmer: 'custom-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        'custom-shimmer': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+      },
     },
   },
   plugins: [
@@ -75,8 +88,8 @@ module.exports = {
           '--swiper-theme-color': '#FF7F74 !important',
         },
       }),
-      require('tailwind-children'),
-      require('tw-elements/dist/plugin')
+        require('tailwind-children'),
+        require('tw-elements/dist/plugin')
     }),
   ],
 }

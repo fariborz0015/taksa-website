@@ -16,3 +16,7 @@ export const loginLinkMaker = (params = { token }) => {
   const base64 = btoa(json)
   return ApiConstants.dashboardUrl + 'login?utm=' + base64
 }
+
+export function getCharacterColor(char) {
+  return `#${Math.floor(char.charCodeAt() * 16771).toString(16)}`
+}

@@ -6,6 +6,7 @@ import { loginLinkMaker, roleCheck } from '@/utils/helper'
 import useOutsideClick from '@/utils/useOutsideClick'
 import { Icon } from '@iconify/react'
 import Cookies from 'js-cookie'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 const UserBanner = () => {
@@ -90,17 +91,19 @@ const UserBanner = () => {
           </div>
 
           <ul className="w-full mt-2 text-black ">
-            {/* <li
-              className="p-3 text-sm flex rtl items-center
+            <Link href={'/profile/chat'}>
+              <li
+                className="p-3 text-sm flex rtl items-center
             cursor-pointer hover:bg-publicGray
             hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all
             "
-            >
-              <span className="ml-2">
-                <Icon icon="ph:user" width={20} />
-              </span>
-              <span>حساب کاربری</span>
-            </li> */}
+              >
+                <span className="ml-2">
+                  <Icon icon="arcticons:libremchat" width={24} />
+                </span>
+                <span>گفتگو </span>
+              </li>
+            </Link>
 
             {(roleCheck({
               roles: user.roles,

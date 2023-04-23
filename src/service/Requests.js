@@ -34,3 +34,11 @@ export const getLandListRequest = async (params) => {
 export const getProfile = async () => {
   return await BackEndReq.get(`app/auth/user`)
 }
+
+ 
+export const getChatLandsMessages = async (params) => {
+  return await BackEndReq.get(`app/message/land/list`, { params: params });
+};
+export const sendChatMessage = async (params) => {
+  return await BackEndReq.post(`app/message/land/send`, params);
+};
