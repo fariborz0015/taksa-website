@@ -7,11 +7,17 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { Navigation } from 'swiper'
 import useUser from '@/hooks/api-handlers/auth/useUser'
-import { landLinkMaker } from '@/utils/helper'
+import { landLinkMaker, sortByattantion } from '@/utils/helper'
 import VideoPlayer from '@/components/video-player/VideoPlayer'
 const LandCardItem = ({ item }) => {
   const { user } = useUser()
+  const sortedMedia = sortByattantion({
+    mainArray: item.media,
+    schemaArray: JSON.parse(item.mediaOrder),
+    key: 'uuid',
+  })
 
+  // console.table({ sortedMedia, media: item.media, mediaOrder: item.mediaOrder })
   return (
     <a
       href={landLinkMaker({ token: user.token, landUuid: item?.uuid })}
@@ -20,8 +26,8 @@ const LandCardItem = ({ item }) => {
       <div className="w-full rounded-xl bg-white  ">
         <div className="mx-auto rounded-t-xl    overflow-hidden  flex justify-center items-center   bg-[#e8f3fd] ">
           <Swiper modules={[Navigation]} navigation autoHeight>
-            {item?.media?.map((medi) => (
-              <SwiperSlide>
+            {sortedMedia?.map((medi) => (
+              <SwiperSlide key={medi.uuid}>
                 {medi.type == 'image' ? (
                   <img
                     src={ApiConstants?.mediaBaseUrl + medi?.uuid}
