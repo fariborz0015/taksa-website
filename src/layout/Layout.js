@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       )
     ) {
       router.push('/login')
-    } else if (router?.asPath?.search('login') > 0 && user.uuid) {
+    } else if (router?.asPath?.search('login') > 0 && user?.uuid) {
       router.push(window.location.origin + '/')
     }
   }, [user, router])
