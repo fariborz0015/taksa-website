@@ -31,7 +31,7 @@ const LandCardItem = ({ item }) => {
                 {medi.type == 'image' ? (
                   <img
                     src={ApiConstants?.mediaBaseUrl + medi?.uuid}
-                    className="h-[231px]"
+                    className="sm:h-[231px]"
                     alt=""
                   />
                 ) : (
