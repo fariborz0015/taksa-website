@@ -165,51 +165,7 @@ const UserBanner = () => {
         </div>
       ) : null}
 
-      <style jsx>{`
-        .dropdown {
-          top: 120%;
-          z-index: 9999;
-          left: 0%;
-          width: 200px;
-          border: 1px solid rgba(230, 230, 230, 1);
-
-          display: flex;
-
-          position: absolute;
-          animation: MoveUpDown 0.3s linear;
-          border-radius: 10px;
-          flex-direction: column;
-          background-color: rgba(248, 248, 248, 1);
-        }
-        .dropdown::after {
-          left: 23px;
-          width: 0px;
-          border: 7px solid transparent;
-          border-top-color: transparent;
-          border-top-style: solid;
-          border-top-width: 7px;
-          border-bottom-color: transparent;
-          bottom: 100%;
-          filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
-          height: 0px;
-          content: '';
-          position: absolute;
-          border-top: none;
-          border-bottom-color: rgba(248, 248, 248, 1);
-        }
-        @keyframes MoveUpDown {
-          0% {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(5%);
-          }
-          100% {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0%);
-          }
-        }
-      `}</style>
+      
     </div>
   )
 }

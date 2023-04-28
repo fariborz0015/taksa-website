@@ -54,52 +54,96 @@ a {
   pointer-events: all !important;
 }
 
-.main-banner-area-four .over-shape img{
-  position:absolute;
+.main-banner-area-four .over-shape img {
+  position: absolute;
 }
 .main-banner-area-four .over-shape img:first-child {
-  top:300px;
-  left:10%;
-  animation:animationFramesOne 25s linear infinite;
- }
- .main-banner-area-four .over-shape img:nth-child(2) {
-  top:200px;
-  left:80%;
-  animation:animationFramesOne 40s linear infinite
- }
- .main-banner-area-four .over-shape img:nth-child(3) {
-  top:150px;
-  left:800px;
-  animation:animationFramesOne 20s linear infinite
- }
- .main-banner-area-four .over-shape img:nth-child(4) {
-  bottom:200px;
-  left:800px;
-  animation:animationFramesOne 30s linear infinite
- }
- .main-banner-area-four .over-shape img:nth-child(5) {
-  top:200px;
-  left:50%;
-  animation:animationFramesOne 10s linear infinite
- }
+  top: 300px;
+  left: 10%;
+  animation: animationFramesOne 25s linear infinite;
+}
+.main-banner-area-four .over-shape img:nth-child(2) {
+  top: 200px;
+  left: 80%;
+  animation: animationFramesOne 40s linear infinite;
+}
+.main-banner-area-four .over-shape img:nth-child(3) {
+  top: 150px;
+  left: 800px;
+  animation: animationFramesOne 20s linear infinite;
+}
+.main-banner-area-four .over-shape img:nth-child(4) {
+  bottom: 200px;
+  left: 800px;
+  animation: animationFramesOne 30s linear infinite;
+}
+.main-banner-area-four .over-shape img:nth-child(5) {
+  top: 200px;
+  left: 50%;
+  animation: animationFramesOne 10s linear infinite;
+}
 
- @keyframes animationFramesOne {
+@keyframes animationFramesOne {
   0% {
-   transform:translate(0) rotate(0deg)
+    transform: translate(0) rotate(0deg);
   }
   20% {
-   transform:translate(73px,-1px) rotate(36deg)
+    transform: translate(73px, -1px) rotate(36deg);
   }
   40% {
-   transform:translate(141px,72px) rotate(72deg)
+    transform: translate(141px, 72px) rotate(72deg);
   }
   60% {
-   transform:translate(83px,122px) rotate(108deg)
+    transform: translate(83px, 122px) rotate(108deg);
   }
   80% {
-   transform:translate(-40px,72px) rotate(144deg)
+    transform: translate(-40px, 72px) rotate(144deg);
   }
   to {
-   transform:translate(0) rotate(0deg)
+    transform: translate(0) rotate(0deg);
   }
- }
+}
+
+.dropdown {
+  top: 120%;
+  z-index: 9999;
+  left: 0%;
+  width: 200px;
+  border: 1px solid rgba(230, 230, 230, 1);
+
+  display: flex;
+
+  position: absolute;
+  animation: MoveUpDown 0.3s linear;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: rgba(248, 248, 248, 1);
+}
+.dropdown::after {
+  left: 23px;
+  width: 0px;
+  border: 7px solid transparent;
+  border-top-color: transparent;
+  border-top-style: solid;
+  border-top-width: 7px;
+  border-bottom-color: transparent;
+  bottom: 100%;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+  height: 0px;
+  content: "";
+  position: absolute;
+  border-top: none;
+  border-bottom-color: rgba(248, 248, 248, 1);
+}
+@keyframes MoveUpDown {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+  }
+}
