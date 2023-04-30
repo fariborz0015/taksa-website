@@ -71,7 +71,7 @@ const UserBanner = () => {
        cursor-pointer items-center flex justify-center transition-all
     "
       >
-        <Icon icon="ph:user" width={24} />
+        <Icon icon="ph:user" width={24} color={'white'}/>
       </button>
       {open ? (
         <div className="dropdown " ref={reference}>

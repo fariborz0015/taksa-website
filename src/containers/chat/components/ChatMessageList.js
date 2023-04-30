@@ -105,7 +105,7 @@ const ChatMessageList = ({ userControl }) => {
                 }
                 value={sendMessageHook.data.text}
                 type="text"
-                className="flex w-full  text-white px-4 rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+                className="flex w-full  text-white bg-gray-700 px-4 rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
               />
             </div>
           </div>
