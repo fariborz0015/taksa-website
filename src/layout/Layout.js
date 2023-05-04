@@ -23,11 +23,15 @@ const Layout = ({ children }) => {
   }, [user, router])
   return (
     <div className="w-full min-h-full flex flex-col justify-between  bg-[#000857]">
-      <>
-        {!router.asPath.search('voice') && <Header />}
-        {children}
-        {!router.asPath.search('voice') && <Footer />}
-      </>
+      {user == null ? (
+        <LodaingPage />
+      ) : (
+        <>
+          {!router.asPath.search('voice') && <Header />}
+          {children}
+          {!router.asPath.search('voice') && <Header />}
+        </>
+      )}
     </div>
   )
 }
