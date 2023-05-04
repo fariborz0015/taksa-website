@@ -27,9 +27,10 @@ const Layout = ({ children }) => {
         <LodaingPage />
       ) : (
         <>
-          <Header />
+          {!router.asPath.search('voice')&&<Header />}
           {children}
-          <Footer />
+          {!router.asPath.search('voice')&&<Footer />}
+          
         </>
       )}
     </div>

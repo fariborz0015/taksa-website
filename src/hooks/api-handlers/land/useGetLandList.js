@@ -17,8 +17,7 @@ const useGetLandList = () => {
     data: data?.data?.result?.data,
     isLoading,
     isError,
-    setPagination: (params) =>
-      setPagination((prev) => ({ ...pagination, ...params })),
+    setPagination: (params) => setPagination((prev) => ({ ...pagination, ...params })),
     pagination,
     key: 'LANDS_LIST',
   }
