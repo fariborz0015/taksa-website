@@ -5,8 +5,14 @@ const Voice = (props) => {
   const { query } = useRouter()
   const audioRef = useRef(null)
   useEffect(() => {
-    if (audioRef) {
-      audioRef.current.play()
+    if (navigator.getAutoplayPolicy('mediaelement') === 'allowed') {
+      if (audioRef) {
+        audioRef.current.play()
+      }
+    }else{
+      if (audioRef) {
+        audioRef.current.play()
+      }
     }
   }, [audioRef])
   return (
