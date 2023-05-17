@@ -1,6 +1,12 @@
+import AnimateOnScroll from '@/components/animate-on-scroll/AnimateOnScroll'
 import Button from '@/components/form/button/Button'
 import LandCardItem from '@/components/land-card/LandCardItem'
 import { ApiConstants } from '@/constants'
+import {
+  LTRslideInAnimation,
+  RTLslideInAnimation,
+  fadeInAnimation,
+} from '@/constants/animations'
 import useRequestLand from '@/hooks/api-handlers/land/useRequestLand'
 import useAlert from '@/hooks/notification/useAlert'
 import { Icon } from '@iconify/react'
@@ -59,23 +65,37 @@ const Home = ({ lands }) => {
           ></div>
           <div className="sm:w-1/2 p-4 sm:p-0 flex justify-center items-center">
             <div className="sm:max-w-xl">
-              <h1 className="sm:text-4xl text-xl text-white font-bold ">
-                نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
-              </h1>
-              <p className="text-white mt-10 sm:text-base text-xs">
-                با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا
-                .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
-              </p>
+              <AnimateOnScroll>
+                <h1 className="sm:text-4xl text-xl text-white font-bold ">
+                  نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
+                </h1>
+              </AnimateOnScroll>
+
+              <AnimateOnScroll
+                varient={{
+                  ...LTRslideInAnimation,
+                  transition: { duration: 1, delay: 0.5 },
+                }}
+              >
+                <p className="text-white mt-10 sm:text-base text-xs">
+                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
+                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
+                </p>
+              </AnimateOnScroll>
               <div className="w-full flex space-x-reverse space-x-4 mt-16 justify-end">
-                <Button className="sm:px-9 px-6 max-w-fit  py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
-                  <span> دانستن بیشتر </span>
-                </Button>
-                <Link href="/request" className="flex-1">
-                  <Button
-                    title={'برای درخواست نمایشگاه کلیک کن !'}
-                    className="sm:!w-fit flex-1  sm:px-9 text-xs sm:text-base py-4 cursor-pointer hover:bg-primaryLight transition-all bg-white hover:!text-white rounded-xl flex items-center space-x-4 space-x-reverse  !text-primaryLight "
-                  ></Button>
-                </Link>
+                <AnimateOnScroll varient={fadeInAnimation}>
+                  <Button className="sm:px-9 px-6 max-w-fit  py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
+                    <span> دانستن بیشتر </span>
+                  </Button>
+                </AnimateOnScroll>
+                <AnimateOnScroll varient={fadeInAnimation}>
+                  <Link href="/request" className="flex-1">
+                    <Button
+                      title={'برای درخواست نمایشگاه کلیک کن !'}
+                      className="sm:!w-fit flex-1  sm:px-9 text-xs sm:text-base py-4 cursor-pointer hover:bg-primaryLight transition-all bg-white hover:!text-white rounded-xl flex items-center space-x-4 space-x-reverse  !text-primaryLight "
+                    ></Button>
+                  </Link>
+                </AnimateOnScroll>
               </div>
             </div>
           </div>
@@ -84,62 +104,99 @@ const Home = ({ lands }) => {
 
       <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 px-6">
         <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg py-20">
-          <div className="sm:w-1/2 flex justify-center items-center sm:mt-0 mt-20">
-            <img src="/assets/img/about-img.png" alt="" />
-          </div>
+          <AnimateOnScroll
+          className={'flex-1'}
+            varient={{
+              ...RTLslideInAnimation,
+              transition: { duration: 1, delay: 1 },
+            }}
+          >
+            <div className="  flex justify-center items-center sm:mt-0 mt-20">
+              <img src="/assets/img/about-img.png" alt="" />
+            </div>
+          </AnimateOnScroll>
           <div className="sm:w-1/2">
             <div className="sm:max-w-xl">
-              <h1 className="text-4xl text-white font-bold">
-                نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
-              </h1>
-              <p className="text-white mt-10">
-                با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا
-                .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !! با
-                نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا ..
-                خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
-              </p>
-              <div className="w-full grid grid-cols-2 mt-10 gap-4">
-                <div className="w-full flex space-x-4 space-x-reverse">
-                  <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
-                    <Icon
-                      icon="ic:baseline-check-circle-outline"
-                      width={20}
-                      color="var(--color-primaryLight)"
-                    />
-                  </span>
-                  <span className="text-white ">با نمایشگاه مجازی تات شما</span>
+              <AnimateOnScroll
+                varient={{
+                  ...fadeInAnimation,
+                  transition: { duration: 1, delay: 1 },
+                }}
+              >
+                <h1 className="text-4xl text-white font-bold">
+                  نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
+                </h1>
+              </AnimateOnScroll>
+              <AnimateOnScroll
+                varient={{
+                  ...LTRslideInAnimation,
+                  transition: { duration: 1, delay: 1 },
+                }}
+              >
+                <p className="text-white mt-10">
+                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
+                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
+                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
+                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
+                </p>
+              </AnimateOnScroll>
+              <AnimateOnScroll
+                varient={{
+                  ...LTRslideInAnimation,
+                  transition: { duration: 1, delay: 1 },
+                }}
+              >
+                <div className="w-full grid grid-cols-2 mt-10 gap-4">
+                  <div className="w-full flex space-x-4 space-x-reverse">
+                    <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                      <Icon
+                        icon="ic:baseline-check-circle-outline"
+                        width={20}
+                        color="var(--color-primaryLight)"
+                      />
+                    </span>
+                    <span className="text-white ">
+                      با نمایشگاه مجازی تات شما
+                    </span>
+                  </div>
+                  <div className="w-full flex space-x-4 space-x-reverse">
+                    <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                      <Icon
+                        icon="ic:baseline-check-circle-outline"
+                        width={20}
+                        color="var(--color-primaryLight)"
+                      />
+                    </span>
+                    <span className="text-white ">
+                      با نمایشگاه مجازی تات شما
+                    </span>
+                  </div>
+                  <div className="w-full flex space-x-4 space-x-reverse">
+                    <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                      <Icon
+                        icon="ic:baseline-check-circle-outline"
+                        width={20}
+                        color="var(--color-primaryLight)"
+                      />
+                    </span>
+                    <span className="text-white ">
+                      با نمایشگاه مجازی تات شما
+                    </span>
+                  </div>
+                  <div className="w-full flex space-x-4 space-x-reverse">
+                    <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
+                      <Icon
+                        icon="ic:baseline-check-circle-outline"
+                        width={20}
+                        color="var(--color-primaryLight)"
+                      />
+                    </span>
+                    <span className="text-white ">
+                      با نمایشگاه مجازی تات شما
+                    </span>
+                  </div>
                 </div>
-                <div className="w-full flex space-x-4 space-x-reverse">
-                  <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
-                    <Icon
-                      icon="ic:baseline-check-circle-outline"
-                      width={20}
-                      color="var(--color-primaryLight)"
-                    />
-                  </span>
-                  <span className="text-white ">با نمایشگاه مجازی تات شما</span>
-                </div>
-                <div className="w-full flex space-x-4 space-x-reverse">
-                  <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
-                    <Icon
-                      icon="ic:baseline-check-circle-outline"
-                      width={20}
-                      color="var(--color-primaryLight)"
-                    />
-                  </span>
-                  <span className="text-white ">با نمایشگاه مجازی تات شما</span>
-                </div>
-                <div className="w-full flex space-x-4 space-x-reverse">
-                  <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
-                    <Icon
-                      icon="ic:baseline-check-circle-outline"
-                      width={20}
-                      color="var(--color-primaryLight)"
-                    />
-                  </span>
-                  <span className="text-white ">با نمایشگاه مجازی تات شما</span>
-                </div>
-              </div>
+              </AnimateOnScroll>
             </div>
           </div>
         </div>
@@ -154,38 +211,62 @@ const Home = ({ lands }) => {
         </div>
 
         <div className="w-full container-lg mx-auto">
-          <h1 className="text-white text-3xl font-bold text-center">
-            خدمات تات
-          </h1>
-          <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
-            با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا ..
-            خود را با کمترین زحمت بسازید و به نمایش عمو با نمایشگاه مجازی تات
-            شما میتوانید نمایشگاه هنری ، تکنولوژی و یا .. خود را با کمترین زحمت
-            بسازید و به نمایش عمو
-          </p>
+          <AnimateOnScroll
+            varient={{
+              ...RTLslideInAnimation,
+              transition: { duration: 1, delay: 1 },
+            }}
+          >
+            <h1 className="text-white text-3xl font-bold text-center">
+              خدمات تات
+            </h1>
+            <AnimateOnScroll>
+              <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
+                با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا
+                .. خود را با کمترین زحمت بسازید و به نمایش عمو با نمایشگاه مجازی
+                تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا .. خود را با
+                کمترین زحمت بسازید و به نمایش عمو
+              </p>
+            </AnimateOnScroll>
+          </AnimateOnScroll>
+          <AnimateOnScroll
+            varient={{
+              ...fadeInAnimation,
+              transition: { duration: 1, staggerChildren: 1 },
+            }}
+          >
+            <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
+              {[',', ',', ',', '', ',', ',', ',', ',', ''].map(
+                (item, index) => (
+                  <AnimateOnScroll
+                    varient={{
+                      ...RTLslideInAnimation,
+                      transition: { duration: 1, staggerChildren: 1 },
+                    }}
+                  >
+                    <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
+                      <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
+                        <Icon
+                          icon="mdi:emoji-excited-outline"
+                          width={32}
+                          color="var(--color-primary)"
+                          className="opacity-50"
+                        />
+                      </span>
 
-          <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
-            {[',', ',', ',', '', ',', ',', ',', ',', ''].map((item) => (
-              <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
-                <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
-                  <Icon
-                    icon="mdi:emoji-excited-outline"
-                    width={32}
-                    color="var(--color-primary)"
-                    className="opacity-50"
-                  />
-                </span>
-
-                <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
-                  همیشه شاد باشید و خوشحال
-                </div>
-                <p className="text-black ">
-                  لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم
-                  لورم اپیسوم
-                </p>
-              </div>
-            ))}
-          </div>
+                      <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
+                        همیشه شاد باشید و خوشحال
+                      </div>
+                      <p className="text-black ">
+                        لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم
+                        اپیسوم لورم اپیسوم
+                      </p>
+                    </div>
+                  </AnimateOnScroll>
+                ),
+              )}
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
       <div className="w-full bg-primaryDark relative pb-32 pt-10 min-h-[400px]">
@@ -197,19 +278,47 @@ const Home = ({ lands }) => {
         </div>
 
         <div className="w-full container-lg mx-auto">
-          <h1 className="text-white text-3xl font-bold text-center">
-            نمایشگاه های تات
-          </h1>
-          <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
-            نمایشگاه های زیر نمایشگاه هایی هستند که کاربران می توانند به راحتی
-            وارد انها شده و از محیط این نمایش گاه ها دیدن کنند
-          </p>
-
-          <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
-            {lands.map((item) => (
-              <LandCardItem key={item.uuid} item={item} />
-            ))}
-          </div>
+          <AnimateOnScroll
+            varient={{
+              ...LTRslideInAnimation,
+              transition: { duration: 1, staggerChildren: 1 },
+            }}
+          >
+            <h1 className="text-white text-3xl font-bold text-center">
+              نمایشگاه های تات
+            </h1>
+            <AnimateOnScroll
+              varient={{
+                ...RTLslideInAnimation,
+                transition: { duration: 1, staggerChildren: 1 },
+              }}
+            >
+              <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
+                نمایشگاه های زیر نمایشگاه هایی هستند که کاربران می توانند به
+                راحتی وارد انها شده و از محیط این نمایش گاه ها دیدن کنند
+              </p>
+            </AnimateOnScroll>
+          </AnimateOnScroll>
+          <AnimateOnScroll
+            varient={{
+              ...RTLslideInAnimation,
+              transition: { duration: 1, staggerChildren: 1 },
+            }}
+          >
+            <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
+              {lands.map((item) => (
+                <AnimateOnScroll
+                  key={item.uuid}
+                  varient={{
+                    ...RTLslideInAnimation,
+                    transition: { duration: 1, staggerChildren: 1 },
+                  }}
+                >
+                  <LandCardItem item={item} />
+                </AnimateOnScroll>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </div>
