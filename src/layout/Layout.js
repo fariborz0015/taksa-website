@@ -27,9 +27,9 @@ const Layout = ({ children }) => {
         <LodaingPage />
       ) : (
         <>
-          {!router.asPath.split('/').includes('voice') && <Header />}
+          <Header />
           {children}
-          {!router.asPath.split('/').includes('voice') && <Header />}
+          <Footer />
         </>
       )}
     </div>
