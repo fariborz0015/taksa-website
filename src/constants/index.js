@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-
+import * as Animations from './animations'
 export const ApiConstants = {
   baseUrl: 'http://185.18.214.5/',
   timeOut: 25000,
@@ -59,3 +59,5 @@ export const NAV_ITEMS = [
     title: 'پشتیبانی و ارتباط با ما',
   },
 ]
+
+export{Animations}
