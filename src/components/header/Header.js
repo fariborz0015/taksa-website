@@ -9,10 +9,30 @@ import MobileMenu from '@/components/header/components/MobileMenu'
 const Header = () => {
   const { user } = useUser()
   const [navigationModal, setNavigationModal] = useState(false)
+  const [inTop, setInTop] = useState(true) // if user in topest scroll mode of page
+  useEffect(() => {
+    document
+      .querySelector('body')
+      .addEventListener('scroll', (e) => handleScroll(e))
+    return () => {
+      document.querySelector('body').removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
-
+  const handleScroll = (e) => {
+    const scrollTop = e.target.scrollTop
+    if (scrollTop === 0) {
+      setInTop(true)
+    } else {
+      setInTop(false)
+    }
+  }
   return (
-    <div className="w-full py-5">
+    <div
+      className={`w-full py-5 sticky top-0 z-50  header-navbar  ${
+        !inTop && 'bg-primaryDark'
+      }`}
+    >
       <div className="container-lg">
         <nav className="w-full h-full flex justify-between sm:flex-row flex-row-reverse px-4 sm:px-0">
           <Link href="/" className="flex items-center">
@@ -33,7 +53,7 @@ const Header = () => {
               </div>
             ) : (
               <Link href={'/login'} className="sm:block hidden">
-                <button className="px-9 py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
+                <button className="px-9 py-4 default-btn  transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
                   <span>ورود </span>
                   <Icon icon="uiw:login" width={24} color="white" />
                 </button>
