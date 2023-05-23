@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
+    <div className="text-white">
       {/* big footer */}
       <div className="bg-primaryDark h-40">
         <div className="container-lg"></div>
@@ -104,7 +104,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="xs:col-span-12 md:col-span-3">
+              <div className="xs:col-span-12 md:col-span-3"> 
                 <div
                   className="flex justify-center items-start col-span-2     rounded-xl border-grey-200"
                   style={{ height: 100, width: '100%' }}
