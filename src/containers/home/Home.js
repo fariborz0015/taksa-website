@@ -49,20 +49,28 @@ const Home = ({ lands }) => {
             <img src="/assets/img/animate3.png" alt="Image" />
           </div>
         </div>
-        <div className="absolute top-0 left-0 flex justify-center items-center  w-full h-full animate-pulse ">
+        <div className="absolute top-0 left-0 flex justify-center items-center  w-full h-full animate-fast-puls ">
+          <img src="/assets/img/animate-star.png" height="100%" alt="" />
+        </div>
+        <div className="absolute top-0 left-0 flex justify-center items-center  w-full h-full   animate-soft-bunce ">
           <img src="/assets/img/animate-star.png" height="100%" alt="" />
         </div>
         {/* hello slider */}
         <div className="w-full   sm:flex-row flex-col-reverse z-10 flex relative container-lg py-20 ">
-          <div
-            ref={movmentEl}
-            className="sm:w-1/2 bg-[url('/assets/img/tuch-ai.png')]  !bg-cover   sm:h-96 h-80  sm:mt-0 mt-20"
-            style={{
-              backgroundSize: '83% !important',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
+          <AnimateOnScroll
+            varient={{
+              ...RTLslideInAnimation,
+              transition: { duration: 1, delay: 0.5 },
             }}
-          ></div>
+          >
+            <div className="    !bg-cover   sm:h-96 h-80  sm:mt-0 mt-20">
+              <img
+                src="/assets/img/tuch-ai.png"
+                className="w-full h-full"
+                alt=""
+              />
+            </div>
+          </AnimateOnScroll>
           <div className="sm:w-1/2 p-4 sm:p-0 flex justify-center items-center">
             <div className="sm:max-w-xl">
               <AnimateOnScroll>
@@ -105,7 +113,7 @@ const Home = ({ lands }) => {
       <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 px-6">
         <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg py-20">
           <AnimateOnScroll
-          className={'flex-1'}
+            className={'flex-1'}
             varient={{
               ...RTLslideInAnimation,
               transition: { duration: 1, delay: 1 },
@@ -130,7 +138,7 @@ const Home = ({ lands }) => {
               <AnimateOnScroll
                 varient={{
                   ...LTRslideInAnimation,
-                  transition: { duration: 1, delay: 1 },
+                  transition: { duration: 1.2, delay: 1.5 },
                 }}
               >
                 <p className="text-white mt-10">
@@ -232,7 +240,7 @@ const Home = ({ lands }) => {
           <AnimateOnScroll
             varient={{
               ...fadeInAnimation,
-              transition: { duration: 1, staggerChildren: 1 },
+              transition: { duration: 1.5, staggerChildren: 1.5 },
             }}
           >
             <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
