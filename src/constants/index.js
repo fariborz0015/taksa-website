@@ -13,51 +13,55 @@ export const QUERY_KEYS = {
 }
 
 export const NAV_ITEMS = [
+ 
   {
     id: uuidv4(),
-    title: 'صفحه اصلی',
-    href:'/',
+    title: 'درباره اکسپوورس',
+  },
+  {
+    id: uuidv4(),
+    title: 'سرزمین های نمایشگاهی',
+  },
+  {
+    id: uuidv4(),
+    title: 'سرویس ها ',
     children: [
       {
         id: uuidv4(),
-        title: 'درباره نمایشگاه مجازی',
+        title: '  برای کسب و کارها   ',
       },
       {
         id: uuidv4(),
-        title: 'ثبت نام و شرکت در نمایشگاه',
+        title: ' برای بازدید کنندگان  ',
       },
     ],
   },
   {
     id: uuidv4(),
-    title: 'درباره نمایشگاه مجازی',
+    title: 'راهنما ',
     children: [
       {
         id: uuidv4(),
-        title: 'شرایط و ضوابط شرکت در نمایشگاه',
+        title: ' پرسشهای متداول  ',
       },
       {
         id: uuidv4(),
-        title: 'جوایز و مزایای شرکت در نمایشگاه',
-      },
-      {
-        id: uuidv4(),
-        title: 'پشتیبانی و ارتباط با ما',
+        title: ' کاربردها ',
       },
     ],
   },
   {
     id: uuidv4(),
-    title: 'ثبت نام و شرکت در نمایشگاه',
+    title: 'اخبار و رویداد ها   ',
   },
   {
     id: uuidv4(),
-    title: 'جوایز و مزایای شرکت در نمایشگاه',
+    title: ' تعرفه ها ',
   },
   {
     id: uuidv4(),
-    title: 'پشتیبانی و ارتباط با ما',
+    title: 'تماس با اکسپوورس  ',
   },
 ]
 
-export{Animations}
+export { Animations }

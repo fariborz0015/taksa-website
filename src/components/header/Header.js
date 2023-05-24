@@ -36,7 +36,7 @@ const Header = () => {
       <div className="container-lg">
         <nav className="w-full h-full flex justify-between sm:flex-row flex-row-reverse px-4 sm:px-0">
           <Link href="/" className="flex items-center">
-            <div className="pt-1 max-w-[200px] h-[40px]   cursor-pointer">
+            <div className="pt-1 max-w-[130px] h-[35px]   cursor-pointer">
               <img
                 src="/assets/img/logo.png"
                 alt=""
@@ -53,7 +53,7 @@ const Header = () => {
               </div>
             ) : (
               <Link href={'/login'} className="sm:block hidden">
-                <button className="px-9 py-4 default-btn  transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
+                <button className="px-4 py-2 default-btn  transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
                   <span>ورود </span>
                   <Icon icon="uiw:login" width={24} color="white" />
                 </button>

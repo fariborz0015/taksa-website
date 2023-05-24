@@ -26,6 +26,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  overflow-x: hidden !important;
+ 
 }
 
 a {
@@ -147,31 +149,31 @@ a {
     transform: translateY(0%);
   }
 }
-.default-btn{
-  position:relative;
-  overflow:hidden;
+.default-btn {
+  position: relative;
+  overflow: hidden;
 }
 .default-btn:before {
-  left:-40px
- }
- .default-btn:after,
- .default-btn:before {
-  content:"";
-  position:absolute;
-  top:-20px;
-  width:10px;
-  height:100px;
-  background-color:#fff;
-  opacity:.5;
-  transition:all .6s ease;
-  transform:rotate(45deg)
- }
- .default-btn:after {
-  right:-40px
- }
- .default-btn:hover:before {
-  left:120%
- }
- .default-btn:hover:after {
-  right:120%
- }
+  left: -40px;
+}
+.default-btn:after,
+.default-btn:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 100px;
+  background-color: #fff;
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  transform: rotate(45deg);
+}
+.default-btn:after {
+  right: -40px;
+}
+.default-btn:hover:before {
+  left: 120%;
+}
+.default-btn:hover:after {
+  right: 120%;
+}

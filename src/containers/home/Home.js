@@ -1,6 +1,8 @@
 import AnimateOnScroll from '@/components/animate-on-scroll/AnimateOnScroll'
+import CustomerItem from '@/components/customer-item/CustomerItem'
 import Button from '@/components/form/button/Button'
 import LandCardItem from '@/components/land-card/LandCardItem'
+import Slider from '@/components/slider/Slider'
 import { ApiConstants } from '@/constants'
 import {
   LTRslideInAnimation,
@@ -17,6 +19,14 @@ const Home = ({ lands }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand()
   const { success, error } = useAlert()
   const movmentEl = useRef(null)
+  const customers = Array(7)
+    .fill('1')
+    .map((item, index) => ({
+      src: '/assets/img/brand' + (index + 1) + '.png',
+    }))
+
+  console.log(customers)
+
   useEffect(() => {
     const handleMouseMove = (event) => {
       const x = event.clientX
@@ -38,7 +48,7 @@ const Home = ({ lands }) => {
     }
   }, [])
   return (
-    <div className=" w-full ">
+    <div className=" w-full overflow-x-hidden">
       <div className="  w-full relative  overflow-hidden  ">
         <div className="main-banner-area-four ">
           <div class="over-shape h-0">
@@ -57,41 +67,47 @@ const Home = ({ lands }) => {
         </div>
         {/* hello slider */}
         <div className="w-full   sm:flex-row flex-col-reverse z-10 flex relative container-lg py-20 ">
-          <AnimateOnScroll
-            varient={{
-              ...RTLslideInAnimation,
-              transition: { duration: 1, delay: 0.5 },
-            }}
-          >
-            <div className="    !bg-cover   sm:h-96 h-80  sm:mt-0 mt-20">
+          <div className="    !bg-cover   sm:h-96 h-80  sm:mt-0 mt-20">
+            <AnimateOnScroll
+              varient={{
+                ...RTLslideInAnimation,
+                transition: { duration: 1, delay: 0.5 },
+              }}
+            >
               <img
                 src="/assets/img/tuch-ai.png"
                 className="w-full h-full"
                 alt=""
               />
-            </div>
-          </AnimateOnScroll>
+            </AnimateOnScroll>
+          </div>
           <div className="sm:w-1/2 p-4 sm:p-0 flex justify-center items-center">
             <div className="sm:max-w-xl">
               <AnimateOnScroll>
                 <h1 className="sm:text-4xl text-xl text-white font-bold ">
-                  نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
+                  اکسپوورس، نسل بعدی نمایشگاه های آنلاین با فناوری متاورس
                 </h1>
               </AnimateOnScroll>
 
               <AnimateOnScroll
                 varient={{
-                  ...LTRslideInAnimation,
+                  ...fadeInAnimation,
                   transition: { duration: 1, delay: 0.5 },
                 }}
               >
                 <p className="text-white mt-10 sm:text-base text-xs">
-                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
-                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
+                  فارغ از محدودیت های دنیای واقعی برای کسب و کار خود نمایشگاه سه
+                  بعدی برگزار کنید، محصولات خود را معرفی کنید، با مشتریان خود
+                  ارتباط برقرار کنید.
                 </p>
               </AnimateOnScroll>
               <div className="w-full flex space-x-reverse space-x-4 mt-16 justify-end">
-                <AnimateOnScroll varient={fadeInAnimation}>
+                <AnimateOnScroll
+                  varient={{
+                    ...fadeInAnimation,
+                    transition: { duration: 1, delay: 0.5 },
+                  }}
+                >
                   <Button className="sm:px-9 px-6 max-w-fit  py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
                     <span> دانستن بیشتر </span>
                   </Button>
@@ -110,7 +126,20 @@ const Home = ({ lands }) => {
         </div>
       </div>
 
-      <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 px-6">
+      <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 p-6">
+        <h1 className="w-full container-lg text-center font-bold text-2xl text-white">
+          مشتریان ما
+        </h1>
+        <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg  py-10">
+          <Slider
+            ItemComponent={CustomerItem}
+            dataKeyProps="item"
+            items={customers}
+          />
+        </div>
+      </div>
+
+      <div className="w-full bg-primaryDark    pt-10 sm:px-0 px-6">
         <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg py-20">
           <AnimateOnScroll
             className={'flex-1'}
@@ -124,7 +153,7 @@ const Home = ({ lands }) => {
             </div>
           </AnimateOnScroll>
           <div className="sm:w-1/2">
-            <div className="sm:max-w-xl">
+            <div className="w-full">
               <AnimateOnScroll
                 varient={{
                   ...fadeInAnimation,
@@ -132,7 +161,7 @@ const Home = ({ lands }) => {
                 }}
               >
                 <h1 className="text-4xl text-white font-bold">
-                  نمایشگاه مجازی تات ، آینده نمایشگاه های فیزیکی و حضوری !
+                  در دنیای نمایشگاه های مجازی متاورس، در آینده غوطه ور شوید
                 </h1>
               </AnimateOnScroll>
               <AnimateOnScroll
@@ -141,11 +170,14 @@ const Home = ({ lands }) => {
                   transition: { duration: 1.2, delay: 1.5 },
                 }}
               >
-                <p className="text-white mt-10">
-                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
-                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
-                  با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و
-                  یا .. خود را با کمترین زحمت بسازید و به نمایش عموم بگذارید !!
+                <p className="text-white mt-10 text-justify">
+                  به ویراورس خوش آمدید. پلت فرم ما شما را به سرزمین های
+                  نمایشگاهی فراتر از مرزهای واقعیت می برد. نمایشگاه ها را کاوش
+                  کنید، محصولات مورد نیاز خود را بیابید، در همایش ها شرکت کنید و
+                  با غرفه ها و سایر شرکت کنندگان ارتباط داشته باشید. حتی می
+                  توانید سرزمین نمایشگاهی خود را داشته باشید و دسترسی مشتریانتان
+                  را فراتر از زمان و مکان گسترش دهید. موانع موقعیت مکانی را
+                  بشکنید و مخاطبین را از هرکجای جهان جذب کنید.
                 </p>
               </AnimateOnScroll>
               <AnimateOnScroll
@@ -154,7 +186,7 @@ const Home = ({ lands }) => {
                   transition: { duration: 1, delay: 1 },
                 }}
               >
-                <div className="w-full grid grid-cols-2 mt-10 gap-4">
+                <div className="w-full grid grid-cols-2 mt-10 gap-4 text-sm">
                   <div className="w-full flex space-x-4 space-x-reverse">
                     <span className=" w-6 h-6 bg-white rounded-full flex justify-center items-center">
                       <Icon
@@ -164,7 +196,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      با نمایشگاه مجازی تات شما
+                      آواتارها ی مجازی غرفه دارها و بازدید کنندگان
                     </span>
                   </div>
                   <div className="w-full flex space-x-4 space-x-reverse">
@@ -176,7 +208,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      با نمایشگاه مجازی تات شما
+                      چت ،ارتباط صوتی و متنی با غرفه ها
                     </span>
                   </div>
                   <div className="w-full flex space-x-4 space-x-reverse">
@@ -188,7 +220,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      با نمایشگاه مجازی تات شما
+                      پشتیبانی از تمامی دستگاه ها
                     </span>
                   </div>
                   <div className="w-full flex space-x-4 space-x-reverse">
@@ -200,7 +232,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      با نمایشگاه مجازی تات شما
+                      سالن های همایش و کلاس های متاورسی
                     </span>
                   </div>
                 </div>
@@ -244,35 +276,26 @@ const Home = ({ lands }) => {
             }}
           >
             <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
-              {[',', ',', ',', '', ',', ',', ',', ',', ''].map(
-                (item, index) => (
-                  <AnimateOnScroll
-                    varient={{
-                      ...RTLslideInAnimation,
-                      transition: { duration: 1, staggerChildren: 1 },
-                    }}
-                  >
-                    <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
-                      <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
-                        <Icon
-                          icon="mdi:emoji-excited-outline"
-                          width={32}
-                          color="var(--color-primary)"
-                          className="opacity-50"
-                        />
-                      </span>
+              {[',', ',', ',', '', ',', ','].map((item, index) => (
+                <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
+                  <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
+                    <Icon
+                      icon="mdi:emoji-excited-outline"
+                      width={32}
+                      color="var(--color-primary)"
+                      className="opacity-50"
+                    />
+                  </span>
 
-                      <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
-                        همیشه شاد باشید و خوشحال
-                      </div>
-                      <p className="text-black ">
-                        لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم
-                        اپیسوم لورم اپیسوم
-                      </p>
-                    </div>
-                  </AnimateOnScroll>
-                ),
-              )}
+                  <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
+                    همیشه شاد باشید و خوشحال
+                  </div>
+                  <p className="text-black ">
+                    لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم
+                    لورم اپیسوم
+                  </p>
+                </div>
+              ))}
             </div>
           </AnimateOnScroll>
         </div>
