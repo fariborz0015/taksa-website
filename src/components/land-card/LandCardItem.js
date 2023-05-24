@@ -61,7 +61,7 @@
 
 import { ApiConstants } from '@/constants'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -79,12 +79,15 @@ const LandCardItem = ({ item }) => {
     key: 'uuid',
   })
 
+  const [hoverCover, setHoverCover] = useState(false)
+
   // console.table({ sortedMedia, media: item.media, mediaOrder: item.mediaOrder })
   return (
     <div className="  rounded-xl bg-white  w-[350px] h-[350px] group ">
       <div className="mx-auto rounded-xl  w-[350px] h-[350px]  overflow-hidden relative  flex justify-center items-center   bg-[#e8f3fd] ">
         {item.media[0].type == 'image' ? (
           <img
+            onClick={(e) => setHoverCover((prev) => !prev)}
             src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
             className="h-full object-cover w-full "
             alt=""
@@ -98,7 +101,12 @@ const LandCardItem = ({ item }) => {
           />
         )}
 
-        <div className="w-full h-full absolute bg-primaryLight/90 top-0 -left-[100%] group-hover:left-0 transition-all duration-500 z-10 ">
+        <div
+          onClick={(e) => setHoverCover((prev) => !prev)}
+          className={`w-full h-full absolute bg-primaryLight/90 top-0 -left-[100%] sm:group-hover:left-0 transition-all duration-500 z-10  ${
+            hoverCover && 'group-hover:left-0'
+          } `}
+        >
           <div className="p-8">
             <span className="font-bold text-lg">توضیحات :</span>
             <p className="  text-white mt-2">
