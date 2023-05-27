@@ -53,7 +53,7 @@ const Header = () => {
               </div>
             ) : (
               <Link href={'/login'} className="sm:block hidden">
-                <button className="px-4 py-2 default-btn  transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
+                <button className="px-6 py-3 default-btn  transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
                   <span>ورود </span>
                   <Icon icon="uiw:login" width={24} color="white" />
                 </button>

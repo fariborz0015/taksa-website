@@ -76,16 +76,21 @@ const Home = ({ lands }) => {
             >
               <img
                 src="/assets/img/tuch-ai.png"
-                className="w-full h-full"
+                className="w-11/12 h-11/12"
                 alt=""
               />
             </AnimateOnScroll>
           </div>
           <div className="sm:w-1/2 p-4 sm:p-0 flex justify-center items-center">
             <div className="sm:max-w-xl">
-              <AnimateOnScroll>
+              <AnimateOnScroll
+                varient={{
+                  ...fadeInAnimation,
+                  transition: { duration: 1, delay: 0.5 },
+                }}
+              >
                 <h1 className="sm:text-4xl text-xl text-white font-bold ">
-                  اکسپوورس، نسل بعدی نمایشگاه های آنلاین با فناوری متاورس
+                  اکسپوورس، نسل بعدی نمایشگاه مجازی با فناوری متاورس
                 </h1>
               </AnimateOnScroll>
 
@@ -109,7 +114,7 @@ const Home = ({ lands }) => {
                   }}
                 >
                   <Button className="sm:px-9 px-6 max-w-fit  py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
-                    <span> دانستن بیشتر </span>
+                    <span> اطلاعات بیشتر </span>
                   </Button>
                 </AnimateOnScroll>
                 <AnimateOnScroll varient={fadeInAnimation}>
@@ -174,10 +179,10 @@ const Home = ({ lands }) => {
                   به ویراورس خوش آمدید. پلت فرم ما شما را به سرزمین های
                   نمایشگاهی فراتر از مرزهای واقعیت می برد. نمایشگاه ها را کاوش
                   کنید، محصولات مورد نیاز خود را بیابید، در همایش ها شرکت کنید و
-                  با غرفه ها و سایر شرکت کنندگان ارتباط داشته باشید. حتی می
-                  توانید سرزمین نمایشگاهی خود را داشته باشید و دسترسی مشتریانتان
-                  را فراتر از زمان و مکان گسترش دهید. موانع موقعیت مکانی را
-                  بشکنید و مخاطبین را از هرکجای جهان جذب کنید.
+                  با غرفه ها و سایر شرکت کنندگان ارتباط داشته باشید. <br />
+                  حتی می توانید سرزمین نمایشگاهی خود را داشته باشید و دسترسی
+                  مشتریانتان را فراتر از زمان و مکان گسترش دهید. موانع موقعیت
+                  مکانی را بشکنید و مخاطبین را از هرکجای جهان جذب کنید.
                 </p>
               </AnimateOnScroll>
               <AnimateOnScroll
@@ -196,7 +201,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      آواتارها ی مجازی غرفه دارها و بازدید کنندگان
+                      حضور کاربران با آواتار مجازی
                     </span>
                   </div>
                   <div className="w-full flex space-x-4 space-x-reverse">
@@ -208,7 +213,7 @@ const Home = ({ lands }) => {
                       />
                     </span>
                     <span className="text-white ">
-                      چت ،ارتباط صوتی و متنی با غرفه ها
+                      چت، ارتباط صوتی و متنی با غرفه ها
                     </span>
                   </div>
                   <div className="w-full flex space-x-4 space-x-reverse">

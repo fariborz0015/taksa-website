@@ -28,6 +28,10 @@ export const NAV_ITEMS = [
     children: [
       {
         id: uuidv4(),
+        title: ' تعرفه ها ',
+      },
+      {
+        id: uuidv4(),
         title: '  برای کسب و کارها   ',
       },
       {
@@ -54,13 +58,10 @@ export const NAV_ITEMS = [
     id: uuidv4(),
     title: 'اخبار و رویداد ها   ',
   },
+
   {
     id: uuidv4(),
-    title: ' تعرفه ها ',
-  },
-  {
-    id: uuidv4(),
-    title: 'تماس با اکسپوورس  ',
+    title: 'تماس با ما  ',
   },
 ]
 
