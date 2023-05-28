@@ -4,9 +4,7 @@ const Footer = () => {
   return (
     <div className="text-white">
       {/* big footer */}
-      <div className="bg-primaryDark h-40">
-        <div className="container-lg"></div>
-      </div>
+     
       {/* small footer */}
       <div className="bg-primaryLowDark py-8 px-8">
         <div className="container-lg">

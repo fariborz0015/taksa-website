@@ -1,5 +1,6 @@
 import AnimateOnScroll from '@/components/animate-on-scroll/AnimateOnScroll'
 import CustomerItem from '@/components/customer-item/CustomerItem'
+import EventCardItem from '@/components/event-card/EventCardItem'
 import Button from '@/components/form/button/Button'
 import LandCardItem from '@/components/land-card/LandCardItem'
 import Slider from '@/components/slider/Slider'
@@ -130,7 +131,6 @@ const Home = ({ lands }) => {
           </div>
         </div>
       </div>
-
       <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 p-6">
         <h1 className="w-full container-lg text-center font-bold text-2xl text-white">
           مشتریان ما
@@ -143,7 +143,6 @@ const Home = ({ lands }) => {
           />
         </div>
       </div>
-
       <div className="w-full bg-primaryDark    pt-10 sm:px-0 px-6">
         <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg py-20">
           <AnimateOnScroll
@@ -246,7 +245,6 @@ const Home = ({ lands }) => {
           </div>
         </div>
       </div>
-
       <div className="w-full bg-primaryLowDark relative pb-32 pt-10 min-h-[400px] ">
         <div className="  absolute right-0 top-0 opacity-40">
           <img src="/assets/img/corner.png" alt="" />
@@ -355,6 +353,29 @@ const Home = ({ lands }) => {
               ))}
             </div>
           </AnimateOnScroll>
+        </div>
+      </div>{' '}
+      <div className="w-full bg-primaryDark relative pb-32 pt-10 min-h-[400px]">
+        <div className="  absolute right-0 top-0 opacity-40">
+          <img src="/assets/img/corner.png" alt="" />
+        </div>
+        <div className="  absolute left-0 transofrm rotate-180 bottom-1 opacity-40">
+          <img src="/assets/img/corner.png" alt="" />
+        </div>
+
+        <div className="w-full container-lg mx-auto grid grid-cols-3 gap-6">
+          <div className="text-white text-3xl font-bold text-center col-span-full w-full">
+            نمایشگاه های تات
+          </div>
+          <div className="col-span-1 w-full">
+            <EventCardItem />
+          </div>
+          <div className="col-span-1 w-full">
+            <EventCardItem />
+          </div>
+          <div className="col-span-1 w-full">
+            <EventCardItem />
+          </div>
         </div>
       </div>
     </div>
