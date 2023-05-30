@@ -13,7 +13,6 @@ export const QUERY_KEYS = {
 }
 
 export const NAV_ITEMS = [
- 
   {
     id: uuidv4(),
     title: 'درباره اکسپوورس',
@@ -57,6 +56,7 @@ export const NAV_ITEMS = [
   {
     id: uuidv4(),
     title: 'اخبار و رویداد ها   ',
+    href: '/events',
   },
 
   {
