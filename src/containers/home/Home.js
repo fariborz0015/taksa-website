@@ -165,7 +165,7 @@ const Home = ({ lands }) => {
                 }}
               >
                 <h1 className="text-4xl text-white font-bold">
-                  در دنیای نمایشگاه های مجازی متاورس، در آینده غوطه ور شوید
+                  با دنیای نمایشگاه های مجازی متاورس، در آینده غوطه ور شوید
                 </h1>
               </AnimateOnScroll>
               <AnimateOnScroll
