@@ -14,8 +14,8 @@ const EventsLayout = ({ children }) => {
           <h1 className="text-2xl font-extrabold">رویداد ها</h1>
         </div>
         <div className="w-full grid grid-cols-3 gap-8 ">
-          <div className="w-full col-span-2 ">{children}</div>
-          <div className="w-full col-span-1     ">
+          <div className="w-full col-span-full ">{children}</div>
+          {/* <div className="w-full col-span-1     ">
             <div className="w-full ">
               <div className="w-full h-10 border-r-4 border-primaryLight items-center flex  px-4 text-lg">
                 جستجو
@@ -76,7 +76,7 @@ const EventsLayout = ({ children }) => {
                   ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import React from 'react'
 const EventList = () => {
   return (
     <EventsLayout>
-      <div className="w-full grid grid-cols-2 gap-4">
+      <div className="w-full grid grid-cols-3 gap-4">
         {Array(10)
           .fill(1)
           .map((_, index) => (
