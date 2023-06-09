@@ -20,10 +20,10 @@ const Home = ({ lands }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand()
   const { success, error } = useAlert()
   const movmentEl = useRef(null)
-  const customers = Array(7)
+  const customers = Array(5)
     .fill('1')
     .map((item, index) => ({
-      src: '/assets/img/brand' + (index + 1) + '.png',
+      src: '/assets/img/customers/' + (index + 1) + '.png',
     }))
 
   console.log(customers)
@@ -131,15 +131,16 @@ const Home = ({ lands }) => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0 p-6">
+      <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0  ">
         <h1 className="w-full container-lg text-center font-bold text-2xl text-white">
           مشتریان ما
         </h1>
-        <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg  py-10">
+        <div dir='rtl' className="w-full    container-lg  py-10">
           <Slider
             ItemComponent={CustomerItem}
             dataKeyProps="item"
             items={customers}
+          
           />
         </div>
       </div>
