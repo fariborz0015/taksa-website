@@ -5,7 +5,7 @@ import SignUp from './signup/SignUp'
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true)
   return (
-    <div className="h-full  w-full flex justify-center items-center flex-col text-black  ">
+    <div className="h-full  w-full flex justify-start items-center flex-col text-black min-h-[576px] ">
       <div className="w-full flex max-w-lg">
         <button
           onClick={() => setIsLogin(true)}

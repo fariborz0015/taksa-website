@@ -67,7 +67,7 @@ const RequestForm = () => {
         />
       </div>
 
-      <Button isLoading={isLoading} onClick={onClickHandler}>
+      <Button className={'max-w-xs mr-auto'} isLoading={isLoading} onClick={onClickHandler}>
         ارسال درخواست سرزمین
       </Button>
     </div>

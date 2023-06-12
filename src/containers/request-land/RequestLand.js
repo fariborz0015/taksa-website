@@ -15,14 +15,14 @@ const RequestLand = () => {
   }, [user])
 
   return (
-    <div className="w-full bg-white rounded-xl py-10 px-6 my-10 container-lg  flex flex-col justify-between   ">
+    <div className="w-full  text-white rounded-xl py-10 px-6 my-10 container-lg  flex flex-col justify-between   ">
       {user?.uuid ? (
         !user.landRequestStatus ? (
-          <div className="w-full text-black   px-4">
+          <div className="w-full text-white   px-4">
             <h1 className="text-xl font-bold w-full  text-right">
               درخواست سرزمین
             </h1>
-            <p className='text-caption mt-2'>
+            <p className='  mt-2'>
               لطفا اطلاعات زیر را تکمیل و ارسال نمایید. پس از بررسی و تایید
               درسامانه، سرزمین نمایشگاهی شما به طور خودکار ایجاد شده و دسترسی
               شما به پنل کنترل آن باز می شود
@@ -30,14 +30,14 @@ const RequestLand = () => {
           </div>
         ) : (
           <div className="w-full   mb-4 ">
-            <h1 className="text-xl font-bold w-full  text-right text-black">
+            <h1 className="text-xl font-bold w-full  text-right text-white">
               نتیجه درخواست سرزمین :
             </h1>
           </div>
         )
       ) : (
         <div className="w-full   mb-4  ">
-          <h1 className="text-xl font-bold w-full  text-right text-black">
+          <h1 className="text-xl font-bold w-full  text-center text-white">
             برای درخواست سرزمین لطفا وارد شوید
           </h1>
         </div>
@@ -47,7 +47,7 @@ const RequestLand = () => {
         {user?.uuid ? (
           user.landRequestStatus ? (
             <div className="w-full  ">
-              <p class="text-caption pb-4">
+              <p class="text-white pb-4">
                 درخواست سرزمین شما ارسال شده و منتظر تایید ادمین سامانه می باشد.
                 در صورتی که بیش از 24 ساعت از درخواست شما گذشته است برای پی گیری
                 می توانید با پشتیبانی تماس حاصل فرمایید.
@@ -105,7 +105,7 @@ const RequestLand = () => {
           )
         ) : (
           <Button
-            className="max-w-md mx-auto"
+            className="max-w-xs mx-auto"
             onClick={() => setLoginModal(true)}
           >
             برای ورود کلیک کنید
