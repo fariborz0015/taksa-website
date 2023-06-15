@@ -42,3 +42,10 @@ export const getChatLandsMessages = async (params) => {
 export const sendChatMessage = async (params) => {
   return await BackEndReq.post(`app/message/land/send`, params);
 };
+ 
+export const getEventsList = async (params) => {
+  return await BackEndReq.get(`app/website/news/list`, { params: params });
+};
+export const getEventsDetails = async (params) => {
+  return await BackEndReq.get(`app/website/news/detail`, { params: params });
+};

@@ -1,8 +1,9 @@
+import { ApiConstants } from '@/constants'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import React from 'react'
 
-const EventCardItem = () => {
+const EventCardItem = ({ item }) => {
   return (
     <div className="w-full bg-white overflow-hidden relative group rounded-xl">
       <div className="h-12 absolute transition-all duration-300 flex rounded-br-xl items-center justify-center bg-primaryLight px-4 w-fit -left-full top-0 group-hover:left-0 text-white">
@@ -11,7 +12,11 @@ const EventCardItem = () => {
       <Link href="/events/1">
         <div className="w-full h-auto max-w-[400] overflow-hidden bg-[#e4f3fe] ">
           <img
-            src="https://jumpx-react.envytheme.com/images/blog/blog1.png"
+            src={
+              item?.media?.uuid
+                ? ApiConstants.eventMediaBaseUrl + item.media.uuid
+                : 'https://jumpx-react.envytheme.com/images/blog/blog1.png'
+            }
             className="w-full h-full object-cover"
           />
         </div>
@@ -41,13 +46,9 @@ const EventCardItem = () => {
         </div>
         <Link href="/events/1">
           <div className="w-full mt-4">
-            <h1 className="text-xl font-bold text-black">یک رویداد واقعی </h1>
+            <h1 className="text-xl font-bold text-black">{item?.title}</h1>
             <p className="text-sm text-caption text-justify">
-              به ویراورس خوش آمدید. پلت فرم ما شما را به سرزمین های نمایشگاهی
-              فراتر از مرزهای واقعیت می برد. نمایشگاه ها را کاوش کنید، محصولات
-              مورد نیاز خود را بیابید، در همایش ها شرکت کنید و با غرفه ها و سایر
-              شرکت کنندگان ارتباط داشته باشید. حتی می توانید سرزمین نمایشگاهی
-              خود را داشته باشید
+              {item?.abstract}
             </p>
           </div>
         </Link>
