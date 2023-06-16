@@ -1,36 +1,48 @@
+import { ApiConstants } from '@/constants'
 import EventsLayout from '@/containers/events/EventsLayout'
+import { Icon } from '@iconify/react'
 import React from 'react'
 
-const EventDetail = () => {
+const EventDetail = ({ data }) => {
+  let dNow = new Date()
+  let d = new Date(data?.expirationTime)
+  let expirationTime = new Intl.DateTimeFormat('fa-IR', {
+    dateStyle: 'medium',
+  }).format(data?.expirationTime ? d : dNow)
   return (
     <EventsLayout>
       <div className="w-full bg-white p-4 rounded-lg">
-        <div className="w-full justify-center flex overflow-hidden ">
+        <div className="w-full justify-center max-w-3xl  mx-auto flex overflow-hidden ">
           <img
-            className="w-full object-cover "
-            src="https://jumpx-react.envytheme.com/images/blog/blog1.png"
+            onError={(e) => (e.target.src = '/assets/img/blog1.png')}
+            src={
+              data?.media?.uuid
+                ? ApiConstants.eventMediaBaseUrl + data.media.uuid
+                : '/assets/img/blog1.png'
+            }
+            className="w-full h-full object-contain"
           />
         </div>
-
+        <div className="w-full flex gap-4 justify-end ">
+          <span className="flex gap-2">
+            <span>
+              <Icon
+                icon={'fontisto:date'}
+                width={24}
+                color="var(--color-primaryLight)"
+              />
+            </span>
+            <span className="font-light text-black">{expirationTime}</span>
+          </span>
+        </div>
         <div className="w-full">
           <h1 className="w-full text-black font-bold text-xl mt-4">
-            عنوان یک رویداد واقعی
+            {data.title}
           </h1>
+
           <div className="my-8 !text-caption">
             {' '}
-            <p>
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-              استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-              نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-              کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان
-              جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای
-              طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان
-              فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری
-              موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد
-              نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل
-              دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: data.detail }}></p>
           </div>
         </div>
       </div>

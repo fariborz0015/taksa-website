@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
 
  
   // Fetch data from external API
-
+ 
   // Pass data to the page via props
   return {
     props: {

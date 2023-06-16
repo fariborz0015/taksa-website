@@ -2,15 +2,14 @@ import EventCardItem from '@/components/event-card/EventCardItem'
 import EventsLayout from '@/containers/events/EventsLayout'
 import React from 'react'
 
-const EventList = () => {
+const EventList = ({data}) => {
   return (
     <EventsLayout>
       <div className="w-full grid grid-cols-3 gap-4">
-        {Array(10)
-          .fill(1)
-          .map((_, index) => (
+        {data
+          .map((item, index) => (
             <div className="w-full col-span-1 " key={index}>
-              <EventCardItem />
+              <EventCardItem  item={item} />
             </div>
           ))}
       </div>

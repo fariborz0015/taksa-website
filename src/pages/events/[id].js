@@ -13,7 +13,7 @@ export async function getServerSideProps(ctx) {
   // Pass data to the page via props
   return {
     props: {
-      data: (await res).data.result.data.list,
+      data: (await res).data.result.detail,
     },
   }
 }
