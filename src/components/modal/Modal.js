@@ -26,7 +26,7 @@ const Modal = ({ children, options }) => {
 
   return (
     <div
-      className={`w-full h-full fixed top-0 left-0 justify-center backdrop-blur-lg ${
+      className={`w-full h-full fixed top-0 left-0 justify-center backdrop-blur-lg z-50 ${
         show ? 'block' : 'delay-300  !w-0 !h-0 overflow-hidden'
       } `}
     >
