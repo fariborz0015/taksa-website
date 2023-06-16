@@ -22,7 +22,7 @@ const RequestLand = () => {
             <h1 className="text-xl font-bold w-full  text-right">
               درخواست سرزمین
             </h1>
-            <p className='  mt-2'>
+            <p className="  mt-2">
               لطفا اطلاعات زیر را تکمیل و ارسال نمایید. پس از بررسی و تایید
               درسامانه، سرزمین نمایشگاهی شما به طور خودکار ایجاد شده و دسترسی
               شما به پنل کنترل آن باز می شود
@@ -47,11 +47,13 @@ const RequestLand = () => {
         {user?.uuid ? (
           user.landRequestStatus ? (
             <div className="w-full  ">
-              <p class="text-white pb-4">
-                درخواست سرزمین شما ارسال شده و منتظر تایید ادمین سامانه می باشد.
-                در صورتی که بیش از 24 ساعت از درخواست شما گذشته است برای پی گیری
-                می توانید با پشتیبانی تماس حاصل فرمایید.
-              </p>
+              {user.landRequestStatus == 'send' ?? (
+                <p class="text-white pb-4">
+                  درخواست سرزمین شما ارسال شده و منتظر تایید ادمین سامانه می
+                  باشد. در صورتی که بیش از 24 ساعت از درخواست شما گذشته است برای
+                  پی گیری می توانید با پشتیبانی تماس حاصل فرمایید.
+                </p>
+              )}
               {user.landRequestStatus == 'send' ? (
                 <div
                   class="bg-blue-100 w-full border rounded-xl h-fit  border-blue-500 text-blue-700 px-4 py-3"
