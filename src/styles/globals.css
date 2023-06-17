@@ -177,3 +177,24 @@ a {
 .default-btn:hover:after {
   right: 120%;
 }
+
+
+.limit-text-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.limit-text-2 {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  /* word-break: break-all; */
+}

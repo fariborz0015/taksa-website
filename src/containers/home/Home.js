@@ -16,7 +16,7 @@ import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import React, { useEffect, useRef } from 'react'
 
-const Home = ({ lands }) => {
+const Home = ({ lands, events }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand()
   const { success, error } = useAlert()
   const movmentEl = useRef(null)
@@ -135,12 +135,11 @@ const Home = ({ lands }) => {
         <h1 className="w-full container-lg text-center font-bold text-2xl text-white">
           مشتریان ما
         </h1>
-        <div dir='rtl' className="w-full    container-lg  py-10">
+        <div dir="rtl" className="w-full    container-lg  py-10">
           <Slider
             ItemComponent={CustomerItem}
             dataKeyProps="item"
             items={customers}
-          
           />
         </div>
       </div>
@@ -368,15 +367,11 @@ const Home = ({ lands }) => {
           <div className="text-white text-3xl font-bold text-center col-span-full w-full">
             نمایشگاه های تات
           </div>
-          <div className="col-span-1 w-full">
-            <EventCardItem />
-          </div>
-          <div className="col-span-1 w-full">
-            <EventCardItem />
-          </div>
-          <div className="col-span-1 w-full">
-            <EventCardItem />
-          </div>
+          {events?.map((item) => (
+            <div className="col-span-1 w-full " key={item.id}>
+              <EventCardItem item={item} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,12 +1,19 @@
 import Pagination from '@/components/pagination/Pagination'
+import { ApiConstants } from '@/constants'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const EventsLayout = ({ children }) => {
+const EventsLayout = ({ children, popular }) => {
   const router = useRouter()
-  console.log(router)
+
+  const date = (date) => {
+    let d = new Date(date)
+    return new Intl.DateTimeFormat('fa-IR', {
+      dateStyle: 'medium',
+    }).format(date)
+  }
   return (
     <div className="w-full pb-10 ">
       <div className="w-full container">
@@ -14,10 +21,10 @@ const EventsLayout = ({ children }) => {
           <h1 className="text-2xl font-extrabold">رویداد ها</h1>
         </div>
         <div className="w-full grid grid-cols-3 gap-8 ">
-          <div className="w-full col-span-full ">{children}</div>
-          {/* <div className="w-full col-span-1     ">
+          <div className="w-full sm:col-span-2 col-span-full ">{children}</div>
+          <div className="w-full sm:col-span-1 col-span-full sm:p-0 p-4    ">
             <div className="w-full ">
-              <div className="w-full h-10 border-r-4 border-primaryLight items-center flex  px-4 text-lg">
+              <div className="w-full text-white h-10 border-r-4 border-primaryLight items-center flex  px-4 text-lg">
                 جستجو
               </div>
               <div className="w-full p-4 bg-white flex gap-4 rounded-lg mt-2">
@@ -31,39 +38,40 @@ const EventsLayout = ({ children }) => {
               </div>
             </div>
             <div className="w-full sm:mt-14 mt-8">
-              <div className="w-full h-10 border-r-4 border-primaryLight flex items-center   px-4 text-lg">
+              <div className="w-full h-10 border-r-4 text-white border-primaryLight flex items-center   px-4 text-lg">
                 رویداد های پر طرفدار
               </div>
               <div className="w-full p-4 divide-y  bg-white flex flex-col   rounded-lg mt-2">
-                {Array(6)
-                  .fill(1)
-                  .map((_, index) => (
-                    <article className="flex gap-4 py-2" key={index}>
-                      <div className="w-20">
-                        <Link href="/news-details/">
-                          <img
-                            className="rounded w-full h-full object-fit"
-                            src="https://jumpx-react.envytheme.com/images/blog/blog1.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
-                      <div className=" flex-1 h-full flex flex-col justify-between">
-                        <time className="text-caption"> 28 مهر - 12:22</time>
-                        <h4 className="title usmall ">
-                          <a href="/news-details/" className="text-black text">
-                            ا غرفه ها و سایر شرکت کنندگان ارتباط داشته باشید.
-                            حتی می توانید سرزمین ....
-                          </a>
-                        </h4>
-                      </div>
-                    </article>
-                  ))}
+                {popular.map((item, index) => (
+                  <article className="flex gap-4 py-2" key={index}>
+                    <div className="w-20">
+                      <Link href={'/events/' + item.uuid}>
+                        <img
+                          className="rounded w-full h-full object-fit"
+                          src={
+                            item?.media?.uuid
+                              ? ApiConstants.eventMediaBaseUrl + item.media.uuid
+                              : '/assets/img/blog1.png'
+                          }
+                          alt=""
+                        />
+                      </Link>
+                    </div>
+                    <div className=" flex-1 h-full flex flex-col justify-between">
+                      <time className="text-caption">{date(new Date())}</time>
+                      <h4 className="title usmall ">
+                        <a href="/news-details/" className="text-black text">
+                          {item.title}
+                        </a>
+                      </h4>
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
 
-            <div className="w-full sm:mt-14 mt-8">
-              <div className="w-full h-10 border-r-4 border-primaryLight  flex items-center  px-4 text-lg">
+            {/* <div className="w-full sm:mt-14 mt-8">
+              <div className="w-full h-10 border-r-4 text-white border-primaryLight  flex items-center  px-4 text-lg">
                 تگ ها
               </div>
               <div className="w-full p-4 bg-white flex flex-wrap   gap-4 rounded-lg mt-2 group">
@@ -75,12 +83,12 @@ const EventsLayout = ({ children }) => {
                     </button>
                   ))}
               </div>
-            </div>
-          </div> */}
+            </div> */}
+          </div>
         </div>
       </div>
 
-      {!router.query.id && <Pagination />}
+ 
     </div>
   )
 }

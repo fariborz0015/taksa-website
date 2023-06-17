@@ -3,14 +3,14 @@ import EventsLayout from '@/containers/events/EventsLayout'
 import { Icon } from '@iconify/react'
 import React from 'react'
 
-const EventDetail = ({ data }) => {
+const EventDetail = ({ data, popular }) => {
   let dNow = new Date()
   let d = new Date(data?.expirationTime)
   let expirationTime = new Intl.DateTimeFormat('fa-IR', {
     dateStyle: 'medium',
   }).format(data?.expirationTime ? d : dNow)
   return (
-    <EventsLayout>
+    <EventsLayout popular={popular}>
       <div className="w-full bg-white p-4 rounded-lg">
         <div className="w-full justify-center max-w-3xl  mx-auto flex overflow-hidden ">
           <img

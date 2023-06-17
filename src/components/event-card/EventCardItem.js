@@ -10,7 +10,7 @@ const EventCardItem = ({ item }) => {
     dateStyle: 'medium',
   }).format(item?.expirationTime ? d : dNow)
   return (
-    <div className="w-full bg-white overflow-hidden relative group rounded-xl">
+    <div className="w-full bg-white overflow-hidden relative group rounded-xl max-w-sm mx-auto">
       <div className="h-12 absolute transition-all duration-300 flex rounded-br-xl items-center justify-center bg-primaryLight px-4 w-fit -left-full top-0 group-hover:left-0 text-white">
         {expirationTime}
       </div>
@@ -52,8 +52,10 @@ const EventCardItem = ({ item }) => {
         </div>
         <Link href={'/events/' + item?.uuid}>
           <div className="w-full mt-4">
-            <h1 className="text-xl font-bold text-black">{item?.title}</h1>
-            <p className="text-sm text-caption text-justify">
+            <h1 className="text-xl font-bold text-black limit-text-1">
+              {item?.title}
+            </h1>
+            <p className="text-sm text-caption text-justify limit-text-1">
               {item?.abstract}
             </p>
           </div>
