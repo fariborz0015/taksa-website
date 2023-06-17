@@ -4,7 +4,7 @@ export const ApiConstants = {
   baseUrl: 'http://185.18.214.5/',
   timeOut: 25000,
   mediaBaseUrl: 'http://185.18.214.5/admin/land/media/',
-  eventMediaBaseUrl:'http://185.18.214.5/admin/dashboard/website/getmedia?uuid=',
+  eventMediaBaseUrl:'http://185.18.214.5/Admin/website/news/getmedia?uuid=',
   dashboardUrl: 'http://185.18.214.5:3001/',
 }
 
