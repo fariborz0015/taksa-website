@@ -1,49 +1,45 @@
-import Button from '@/components/form/button/Button'
-import ChatMessageItem from '@/containers/chat/components/ChatMessageItem'
-import useGetChatLandMessage from '@/hooks/api-handlers/chat/useGetChatLandMessage'
-import useSendChatMessage from '@/hooks/api-handlers/chat/useSendChatMessage'
-import useUpdateQuery from '@/hooks/api-handlers/update-query/useUpdateQuery'
-import { Icon } from '@iconify/react'
-import React, { useEffect, useRef } from 'react'
+import Button from "@/components/form/button/Button";
+import ChatMessageItem from "@/containers/chat/components/ChatMessageItem";
 
-const ChatMessageList = ({ userControl }) => {
-  const { selectedUser, setSelectedUser } = userControl
-  const updateQuery = useUpdateQuery()
-  const messagesHook = useGetChatLandMessage({
-    landUuid: selectedUser.uuid,
-  })
-  const sendMessageHook = useSendChatMessage({
-    landUuid: selectedUser.uuid,
-  })
+import useGetSupportChatMessages from "@/hooks/api-handlers/chat/useGetSupportChatMessages";
+import useSendChatMessage from "@/hooks/api-handlers/chat/useSendChatMessage";
+import useUpdateQuery from "@/hooks/api-handlers/update-query/useUpdateQuery";
+import { Icon } from "@iconify/react";
+import React, { useEffect, useRef } from "react";
+
+const ChatMessageList = () => {
+  const updateQuery = useUpdateQuery();
+  const messagesHook = useGetSupportChatMessages();
+  const sendMessageHook = useSendChatMessage();
 
   const sendMessageHandler = () => {
-    if (selectedUser && sendMessageHook.data.text?.length > 0) {
+    if (sendMessageHook.data.text?.length > 0) {
       sendMessageHook
         .submit()
         .then((res) => {
-          sendMessageHook.setData({ text: '' })
+          sendMessageHook.setData({ text: "" });
 
-          updateQuery.update(messagesHook.key)
+          updateQuery.update(messagesHook.key);
         })
         .catch((err) => {
-          console.log('error', err.response)
+          console.log("error", err.response);
         })
         .finally(() => {
-          sendMessageHook.setIsLoading(false)
-        })
+          sendMessageHook.setIsLoading(false);
+        });
     }
-  }
-  const scrollRef = useRef(null)
+  };
+  const scrollRef = useRef(null);
   useEffect(() => {
     const scrollMessagesToBottom = () => {
       if (scrollRef.current) {
         if (scrollRef.current.scrollTop !== scrollRef.current.scrollHeight) {
-          scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
       }
-    }
-    scrollMessagesToBottom()
-  }, [messagesHook?.data?.messages?.length])
+    };
+    scrollMessagesToBottom();
+  }, [messagesHook?.data?.messages?.length]);
 
   return (
     <div className="flex flex-col flex-auto h-full  px-6">
@@ -51,12 +47,9 @@ const ChatMessageList = ({ userControl }) => {
         <div className="  w-full border-b  ">
           <div className="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2 ">
             <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white flex-shrink-0">
-              {selectedUser?.title?.[0].toUpperCase()}
+              پ
             </div>
-            <div className="mr-2 text-sm font-semibold">
-              {' '}
-              {selectedUser?.title}
-            </div>
+            <div className="mr-2 text-sm font-semibold">پشتیبانی</div>
           </div>
         </div>
         <div
@@ -67,13 +60,22 @@ const ChatMessageList = ({ userControl }) => {
             <div className=" flex   flex-col-reverse">
               {messagesHook.isLoading ? (
                 <Shimmer />
-              ) : messagesHook.data.messages.length > 0 ? (
-                messagesHook.data.messages.map((item, index) => (
+              ) : messagesHook?.data?.messages?.length > 0 ? (
+                messagesHook?.data?.messages?.map((item, index) => (
                   <ChatMessageItem item={item} key={index} />
                 ))
               ) : (
-                <div className="w-full h-full flex justify-center items-center absolute left-0 top-0">
-                  برای اولین بار پیامی ارسال کنید{' '}
+                <div className="flex flex-col flex-auto h-full  px-6">
+                  <div className="flex  items-center justify-center flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
+                    <div className="h-full w-full  flex  items-center justify-center flex-col">
+                      <div className="w-full opacity-25 max-h-fit   flex  items-center justify-center flex-col">
+                        <Icon icon={"arcticons:libremchat"} width={"40%"} />
+                      </div>
+                      <span className="mt-4 text-lg text-gray-500 font-bold ">
+                        لطفا مشکل خود را به شکل کامل بیان کنید
+                      </span>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -81,8 +83,8 @@ const ChatMessageList = ({ userControl }) => {
         </div>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
-            sendMessageHandler()
+            e.preventDefault();
+            sendMessageHandler();
           }}
           className="flex flex-row items-center h-16 rounded-xl  border-t pt-1 w-full px-4"
         >
@@ -112,10 +114,10 @@ const ChatMessageList = ({ userControl }) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatMessageList
+export default ChatMessageList;
 
 const Shimmer = () => {
   return (
@@ -125,7 +127,7 @@ const Shimmer = () => {
           <div className="col-start-1 col-end-8 p-3 rounded-lg animate-shimmer">
             <div
               className={`flex flex-row items-center ${
-                item % 2 == 0 && 'justify-start flex-row-reverse'
+                item % 2 == 0 && "justify-start flex-row-reverse"
               }`}
             >
               {item % 2 == 0 && (
@@ -133,7 +135,7 @@ const Shimmer = () => {
               )}
               <div
                 className={`relative  ${
-                  item % 2 == 0 ? 'ml-3' : 'mr-3'
+                  item % 2 == 0 ? "ml-3" : "mr-3"
                 } text-sm bg-gray-200 py-2 px-4 shadow rounded-xl w-1/2`}
               >
                 <div className="h-4 bg-gray-300 rounded"></div>
@@ -141,8 +143,8 @@ const Shimmer = () => {
               </div>
             </div>
           </div>
-        ),
+        )
       )}
     </>
-  )
-}
+  );
+};

@@ -3,7 +3,7 @@ import React from 'react'
 const ChatMessageItem = ({ item }) => {
   return (
     <>
-      {item?.from == 'admin' ? (
+      {item?.from == 'superAdmin' ? (
         <div className="col-start-6 col-end-13 p-3 rounded-lg">
           <div className="flex items-center justify-start flex-row-reverse">
             <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white flex-shrink-0">

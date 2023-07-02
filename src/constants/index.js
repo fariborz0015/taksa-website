@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
 import * as Animations from './animations'
 export const ApiConstants = {
-  baseUrl: 'http://185.18.214.5/',
+  baseUrl: 'http://185.18.214.5:1050/',
   timeOut: 25000,
-  mediaBaseUrl: 'http://185.18.214.5/admin/land/media/',
-  eventMediaBaseUrl:'http://185.18.214.5/Admin/website/news/getmedia?uuid=',
+  mediaBaseUrl: 'http://185.18.214.5:1050/admin/land/media/',
+  eventMediaBaseUrl:'http://185.18.214.5:1050/Admin/website/news/getmedia?uuid=',
   dashboardUrl: 'http://185.18.214.5:3001/',
 }
 

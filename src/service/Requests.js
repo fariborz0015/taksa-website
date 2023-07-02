@@ -39,8 +39,14 @@ export const getProfile = async () => {
 export const getChatLandsMessages = async (params) => {
   return await BackEndReq.get(`app/message/land/list`, { params: params });
 };
+export const getSupportMessagesRequest = async (params) => {
+  return await BackEndReq.get(`app/message/superadmin/get`, { params: params });
+};
 export const sendChatMessage = async (params) => {
-  return await BackEndReq.post(`app/message/land/send`, params);
+  return await BackEndReq.post(`app/message/land/sendsuperadmin`, params);
+};
+export const sendMessageToSupport = async (params) => {
+  return await BackEndReq.post(`app/message/superadmin/send`, params);
 };
  
 export const getEventsList = async (params) => {
