@@ -59,58 +59,67 @@
 
 // export default LandCardItem
 
-import { ApiConstants } from '@/constants'
-import Link from 'next/link'
-import React, { useState } from 'react'
+import { ApiConstants } from "@/constants";
+import Link from "next/link";
+import React, { useState } from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import { Navigation } from 'swiper'
-import useUser from '@/hooks/api-handlers/auth/useUser'
-import { landLinkMaker, sortByattantion } from '@/utils/helper'
-import VideoPlayer from '@/components/video-player/VideoPlayer'
-import Button from '@/components/form/button/Button'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+import useUser from "@/hooks/api-handlers/auth/useUser";
+import { landLinkMaker, sortByattantion } from "@/utils/helper";
+import VideoPlayer from "@/components/video-player/VideoPlayer";
+import Button from "@/components/form/button/Button";
 const LandCardItem = ({ item }) => {
-  const { user } = useUser()
+  const { user } = useUser();
   const sortedMedia = sortByattantion({
     mainArray: item.media,
     schemaArray: item.media, //JSON?.parse(item?.mediaOrder ?? []),
-    key: 'uuid',
-  })
+    key: "uuid",
+  });
 
-  const [hoverCover, setHoverCover] = useState(false)
+  const [hoverCover, setHoverCover] = useState(false);
 
   // console.table({ sortedMedia, media: item.media, mediaOrder: item.mediaOrder })
   return (
     <div className="  rounded-xl bg-white  w-[350px] h-[350px] group ">
       <div className="mx-auto rounded-xl  w-[350px] h-[350px]  overflow-hidden relative  flex justify-center items-center   bg-[#e8f3fd] ">
-        {item.media[0].type == 'image' ? (
+        {item.media.length > 0 ? (
+          item?.media[0]?.type == "image" ? (
+            <img
+              onClick={(e) => setHoverCover((prev) => !prev)}
+              src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
+              className="h-full object-cover w-full "
+              alt=""
+            />
+          ) : (
+            <VideoPlayer
+              src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
+              className="  bg-black"
+              height={"100%"}
+              controls
+            />
+          )
+        ) : (
           <img
             onClick={(e) => setHoverCover((prev) => !prev)}
-            src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
+            src={'/assets/placeholder.png'}
             className="h-full object-cover w-full "
             alt=""
-          />
-        ) : (
-          <VideoPlayer
-            src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
-            className="  bg-black"
-            height={'100%'}
-            controls
           />
         )}
 
         <div
           onClick={(e) => setHoverCover((prev) => !prev)}
           className={`w-full h-full absolute bg-primaryLight/90 top-0 -left-[100%] sm:group-hover:left-0 transition-all duration-500 z-10  ${
-            hoverCover && 'group-hover:left-0'
+            hoverCover && "group-hover:left-0"
           } `}
         >
           <div className="p-8">
             <span className="font-bold text-lg">توضیحات :</span>
             <p className="  text-white mt-2">
-              {item.description?.slice(0, 180) + '...'}
+              {item.description?.slice(0, 180) + "..."}
             </p>
           </div>
           <Button className="!text-white !bg-black !absolute !bottom-5 !w-fit !px-6 !left-5 ">
@@ -127,7 +136,7 @@ const LandCardItem = ({ item }) => {
         {item.title}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LandCardItem
+export default LandCardItem;

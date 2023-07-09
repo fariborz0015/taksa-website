@@ -355,7 +355,7 @@ const Home = ({ lands, events }) => {
           </AnimateOnScroll>
         </div>
       </div>{' '}
-      <div className="w-full bg-primaryDark relative pb-32 pt-10 min-h-[400px]">
+      {/* <div className="w-full bg-primaryDark relative pb-32 pt-10 min-h-[400px]">
         <div className="  absolute right-0 top-0 opacity-40">
           <img src="/assets/img/corner.png" alt="" />
         </div>
@@ -373,7 +373,7 @@ const Home = ({ lands, events }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
