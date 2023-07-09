@@ -1,4 +1,4 @@
-import { getChatLandsMessages, getSupportMessagesRequest } from "@/service/Requests";
+import { getSupportMessagesRequest } from "@/service/Requests";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";

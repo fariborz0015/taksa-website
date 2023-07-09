@@ -1,8 +1,11 @@
-import useGetLandList from "@/hooks/api-handlers/land/useGetLandList";
-import { getCharacterColor } from "@/utils/helper";
-import React from "react";
+import useGetLandList from '@/hooks/api-handlers/land/useGetLandList'
+import { getCharacterColor } from '@/utils/helper'
+import React from 'react'
 
-const ChatUserList = () => {
+const ChatUserList = ({ userControl }) => {
+  const { selectedUser, setSelectedUser } = userControl
+  const landsHook = useGetLandList()
+
   return (
     <div className="flex flex-col py-8 px-4 w-64 bg-white flex-shrink-0 rounded-lg ">
       <div className="flex flex-row items-center justify-center h-12 w-full">
@@ -26,23 +29,55 @@ const ChatUserList = () => {
       </div>
 
       <div className="flex flex-col mt-8">
+        <div className="flex flex-row items-center justify-between text-xs">
+          <span className="font-bold"> گفتگو های فعال </span>
+          <span className="flex items-center justify-center pt-1 bg-gray-300 h-6 w-6 rounded-full">
+            4
+          </span>
+        </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
-          <button
-            className={`flex flex-row items-center rounded-xl p-2  
-             bg-primary !text-white 
-             `}
-          >
-            <div
-              className={`flex items-center justify-center h-8 w-8 bg-gray-200 text-gray-900  rounded-full`}
-            >
-              پ
+          {landsHook.isLoading ? (
+            <button className="flex flex-row items-center bg-gray-200 animate-shimmer  rounded-xl p-2">
+              <div className="flex items-center justify-center h-8 w-8 bg-gray-300 rounded-full animate-shimmer "></div>
+              <div className="mr-2 text-sm font-semibold animate-shimmer bg-gray-300  h-4 rounded-full w-1/2 ">
+                {' '}
+              </div>
+            </button>
+          ) : landsHook?.data?.lands?.length > 0 ? (
+            landsHook?.data?.lands.map((land) => {
+              let isActive = selectedUser?.uuid == land.uuid
+
+              return (
+                <button
+                  onClick={() => setSelectedUser(land)}
+                  className={`flex flex-row items-center rounded-xl p-2  ${
+                    isActive ? 'bg-primary !text-white' : ' hover:bg-gray-100'
+                  }`}
+                >
+                  <div
+                    className={`flex items-center justify-center h-8 w-8   rounded-full`}
+                    style={{
+                      backgroundColor: getCharacterColor(land?.title[0]),
+                    }}
+                  >
+                    {land?.title[0].toUpperCase()}
+                  </div>
+                  <div className="mr-2 text-sm font-semibold">
+                    {' '}
+                    {land?.title}
+                  </div>
+                </button>
+              )
+            })
+          ) : (
+            <div className="mx-2 text-sm font-semibold">
+              هیچ سرزمینی یافت نشد
             </div>
-            <div className="mr-2 text-sm font-semibold">پشتیبانی </div>
-          </button>
+          )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChatUserList;
+export default ChatUserList

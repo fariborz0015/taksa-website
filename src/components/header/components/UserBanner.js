@@ -104,6 +104,19 @@ const UserBanner = () => {
                 <span>گفتگو </span>
               </li>
             </Link>
+            <Link href={'/profile/support'}>
+              <li
+                className="p-3 text-sm flex rtl items-center
+            cursor-pointer hover:bg-publicGray
+            hover:bg-primary hover:bg-opacity-80 hover:text-white transition-all
+            "
+              >
+                <span className="ml-2">
+                  <Icon icon="arcticons:libremchat" width={24} />
+                </span>
+                <span>پشتیبانی </span>
+              </li>
+            </Link>
 
             {(roleCheck({
               roles: user.roles,

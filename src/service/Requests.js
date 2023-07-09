@@ -43,8 +43,9 @@ export const getSupportMessagesRequest = async (params) => {
   return await BackEndReq.get(`app/message/superadmin/get`, { params: params });
 };
 export const sendChatMessage = async (params) => {
-  return await BackEndReq.post(`app/message/land/sendsuperadmin`, params);
+  return await BackEndReq.post(`app/message/land/send`, params);
 };
+ 
 export const sendMessageToSupport = async (params) => {
   return await BackEndReq.post(`app/message/superadmin/send`, params);
 };
