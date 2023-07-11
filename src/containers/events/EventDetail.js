@@ -12,7 +12,7 @@ const EventDetail = ({ data, popular }) => {
   return (
     <EventsLayout popular={popular}>
       <div className="w-full bg-white p-4 rounded-lg">
-        <div className="w-full justify-center max-w-3xl  mx-auto flex overflow-hidden ">
+        <div className="w-full justify-center mt-8 max-w-3xl  mx-auto flex overflow-hidden ">
           <img
             onError={(e) => (e.target.src = '/assets/img/blog1.png')}
             src={
@@ -20,10 +20,10 @@ const EventDetail = ({ data, popular }) => {
                 ? ApiConstants.eventMediaBaseUrl + data.media.uuid
                 : '/assets/img/blog1.png'
             }
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain rounded-xl"
           />
         </div>
-        <div className="w-full flex gap-4 justify-end ">
+        <div className="w-full mt-4 flex gap-4 justify-end ">
           <span className="flex gap-2">
             <span>
               <Icon

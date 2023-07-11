@@ -60,9 +60,9 @@ const EventsLayout = ({ children, popular }) => {
                     <div className=" flex-1 h-full flex flex-col justify-between">
                       <time className="text-caption">{date(new Date())}</time>
                       <h4 className="title usmall ">
-                        <a href="/news-details/" className="text-black text">
+                        <Link  href={'/events/' + item.uuid} className="text-black text">
                           {item.title}
-                        </a>
+                        </Link>
                       </h4>
                     </div>
                   </article>
