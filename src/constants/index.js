@@ -3,8 +3,8 @@ import * as Animations from './animations'
 export const ApiConstants = {
   baseUrl:  process.env.API_BASE_URL,
   timeOut:process.env.TIMEOUT,
-  mediaBaseUrl: process.env.MEDIAA_BASE_URL,
-  eventMediaBaseUrl:process.env.EVENT_MEDIA_BASE_URL,
+  mediaBaseUrl: process.env.API_BASE_URL+"admin/land/media/",
+  eventMediaBaseUrl: process.env.API_BASE_URL+"Admin/website/news/getmedia?uuid=",
   dashboardUrl: process.env.DASHBOARD_URL,
 }
 
