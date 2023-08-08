@@ -339,7 +339,7 @@ const Home = ({ lands, events }) => {
               transition: { duration: 1, staggerChildren: 1 },
             }}
           >
-            <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
+            <div className="w-full grid gap-x-6 gap-y-16 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
               {lands.map((item) => (
                 <AnimateOnScroll
                   key={item.uuid}
