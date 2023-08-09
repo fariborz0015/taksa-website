@@ -20,30 +20,36 @@ const Home = ({ lands, events }) => {
   const { isLoading, submit, setIsLoading } = useRequestLand();
   const { success, error } = useAlert();
   const movmentEl = useRef(null);
-  const featurs=[
+  const featurs = [
     {
-      title:"دسترسی آسان",
-      description:'امکان بازدید و گشت و گذار در نمایشگاه سه بعدی به طور 24 ساعته بدون محدودیت زمانی و جغرافیایی',
+      title: "دسترسی آسان",
+      description:
+        "امکان بازدید و گشت و گذار در نمایشگاه سه بعدی به طور 24 ساعته بدون محدودیت زمانی و جغرافیایی",
     },
     {
-      title:" پشتیبانی از تمامی دستگاه ها  ",
-      description:'  امکان بازدید از نمایشگاه با استفاده از موبایل ،لپ تاپ،تبلت و ... بدون نیاز به نصب نرم افزار وتنها از طریق مرورگر ',
+      title: " پشتیبانی از تمامی دستگاه ها  ",
+      description:
+        "  امکان بازدید از نمایشگاه با استفاده از موبایل ،لپ تاپ،تبلت و ... بدون نیاز به نصب نرم افزار وتنها از طریق مرورگر ",
     },
     {
-      title:" امکان بازدید گروهی ",
-      description:'  امکان بازدید همزمان یک گروه از همکاران ، دوستان و یا خانواده از نمایشگاه متاورسی',
+      title: " امکان بازدید گروهی ",
+      description:
+        "  امکان بازدید همزمان یک گروه از همکاران ، دوستان و یا خانواده از نمایشگاه متاورسی",
     },
     {
-      title:" ارتباط با چت صوتی و متنی",
-      description:' چت صوتی و متنی با غرفه داران، بازدید کنندگان و سایر افراد به صورت همزمان ',
+      title: " ارتباط با چت صوتی و متنی",
+      description:
+        " چت صوتی و متنی با غرفه داران، بازدید کنندگان و سایر افراد به صورت همزمان ",
     },
     {
-      title:" حضور کاربران با آواتار مجازی"  ,
-      description:' کاربران و غرفه داران می توانند با ایجاد آواتار مد نظر خود در محیط سه بعدی نمایشگاه حضور پیدا کنند و با سایر آواتارها و کاربران تعامل و ارتباط داشته باشند ',
+      title: " حضور کاربران با آواتار مجازی",
+      description:
+        " کاربران و غرفه داران می توانند با ایجاد آواتار مد نظر خود در محیط سه بعدی نمایشگاه حضور پیدا کنند و با سایر آواتارها و کاربران تعامل و ارتباط داشته باشند ",
     },
     {
-      title:"   انتقال به محل مورد نظر   "  ,
-      description:'  امکان قراردادن پرتال در غرفه و نمایشگاه برای انتقال سریع کاربران به محل مورد نظر (دفتر مجازی شرکت، اتاق جلسات، ساختمان در حال ساخت، مزرعه).',
+      title: "   انتقال به محل مورد نظر   ",
+      description:
+        "  امکان قراردادن پرتال در غرفه و نمایشگاه برای انتقال سریع کاربران به محل مورد نظر (دفتر مجازی شرکت، اتاق جلسات، ساختمان در حال ساخت، مزرعه).",
     },
   ];
   const customers = Array(5)
@@ -290,9 +296,7 @@ const Home = ({ lands, events }) => {
               ویژگی های اکسپوورس
             </h1>
             <AnimateOnScroll>
-              <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
-           
-              </p>
+              <p className="text-lg text-white mx-auto sm:max-w-5xl text-center"></p>
             </AnimateOnScroll>
           </AnimateOnScroll>
           <AnimateOnScroll
@@ -314,12 +318,9 @@ const Home = ({ lands, events }) => {
                   </span>
 
                   <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
-                    همیشه شاد باشید و خوشحال
+                    {item?.title}
                   </div>
-                  <p className="text-black ">
-                    لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم لورم اپیسوم
-                    لورم اپیسوم
-                  </p>
+                  <p className="text-black ">{item?.description}</p>
                 </div>
               ))}
             </div>
@@ -342,7 +343,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-            نمایشگاه های فعال
+              نمایشگاه های فعال
             </h1>
             <AnimateOnScroll
               varient={{
@@ -352,7 +353,7 @@ const Home = ({ lands, events }) => {
             >
               <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
                 نمایشگاه های زیر نمایشگاه هایی هستند که کاربران می توانند به
-                راحتی وارد انها شده و از محیط این نمایشگاه   ها دیدن کنند
+                راحتی وارد انها شده و از محیط این نمایشگاه ها دیدن کنند
               </p>
             </AnimateOnScroll>
           </AnimateOnScroll>
