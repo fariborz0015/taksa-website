@@ -1,53 +1,79 @@
-import AnimateOnScroll from '@/components/animate-on-scroll/AnimateOnScroll'
-import CustomerItem from '@/components/customer-item/CustomerItem'
-import EventCardItem from '@/components/event-card/EventCardItem'
-import Button from '@/components/form/button/Button'
-import LandCardItem from '@/components/land-card/LandCardItem'
-import Slider from '@/components/slider/Slider'
-import { ApiConstants } from '@/constants'
+import AnimateOnScroll from "@/components/animate-on-scroll/AnimateOnScroll";
+import CustomerItem from "@/components/customer-item/CustomerItem";
+import EventCardItem from "@/components/event-card/EventCardItem";
+import Button from "@/components/form/button/Button";
+import LandCardItem from "@/components/land-card/LandCardItem";
+import Slider from "@/components/slider/Slider";
+import { ApiConstants } from "@/constants";
 import {
   LTRslideInAnimation,
   RTLslideInAnimation,
   fadeInAnimation,
-} from '@/constants/animations'
-import useRequestLand from '@/hooks/api-handlers/land/useRequestLand'
-import useAlert from '@/hooks/notification/useAlert'
-import { Icon } from '@iconify/react'
-import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
+} from "@/constants/animations";
+import useRequestLand from "@/hooks/api-handlers/land/useRequestLand";
+import useAlert from "@/hooks/notification/useAlert";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
+import React, { useEffect, useRef } from "react";
 
 const Home = ({ lands, events }) => {
-  const { isLoading, submit, setIsLoading } = useRequestLand()
-  const { success, error } = useAlert()
-  const movmentEl = useRef(null)
+  const { isLoading, submit, setIsLoading } = useRequestLand();
+  const { success, error } = useAlert();
+  const movmentEl = useRef(null);
+  const featurs=[
+    {
+      title:"دسترسی آسان",
+      description:'امکان بازدید و گشت و گذار در نمایشگاه سه بعدی به طور 24 ساعته بدون محدودیت زمانی و جغرافیایی',
+    },
+    {
+      title:" پشتیبانی از تمامی دستگاه ها  ",
+      description:'  امکان بازدید از نمایشگاه با استفاده از موبایل ،لپ تاپ،تبلت و ... بدون نیاز به نصب نرم افزار وتنها از طریق مرورگر ',
+    },
+    {
+      title:" امکان بازدید گروهی ",
+      description:'  امکان بازدید همزمان یک گروه از همکاران ، دوستان و یا خانواده از نمایشگاه متاورسی',
+    },
+    {
+      title:" ارتباط با چت صوتی و متنی",
+      description:' چت صوتی و متنی با غرفه داران، بازدید کنندگان و سایر افراد به صورت همزمان ',
+    },
+    {
+      title:" حضور کاربران با آواتار مجازی"  ,
+      description:' کاربران و غرفه داران می توانند با ایجاد آواتار مد نظر خود در محیط سه بعدی نمایشگاه حضور پیدا کنند و با سایر آواتارها و کاربران تعامل و ارتباط داشته باشند ',
+    },
+    {
+      title:"   انتقال به محل مورد نظر   "  ,
+      description:'  امکان قراردادن پرتال در غرفه و نمایشگاه برای انتقال سریع کاربران به محل مورد نظر (دفتر مجازی شرکت، اتاق جلسات، ساختمان در حال ساخت، مزرعه).',
+    },
+  ];
   const customers = Array(5)
-    .fill('1')
+    .fill("1")
     .map((item, index) => ({
-      src: '/assets/img/customers/' + (index + 1) + '.png',
-    }))
+      src: "/assets/img/customers/" + (index + 1) + ".png",
+    }));
 
-  console.log(customers)
+  console.log(customers);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const x = event.clientX
-      const y = event.clientY
-      const element = movmentEl.current
+      const x = event.clientX;
+      const y = event.clientY;
+      const element = movmentEl.current;
       if (element) {
-        const width = element.offsetWidth
-        const height = element.offsetHeight
-        const dx = (y - height / 2) / height
-        const dy = (x - width / 2) / width
-        element.style.backgroundPosition = `${dx * 5}px ${dy * 5}px`
+        const width = element.offsetWidth;
+        const height = element.offsetHeight;
+        const dx = (y - height / 2) / height;
+        const dy = (x - width / 2) / width;
+        element.style.backgroundPosition = `${dx * 5}px ${dy * 5}px`;
       }
-    }
+    };
 
-    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
   return (
     <div className=" w-full overflow-x-hidden">
       <div className="  w-full relative  overflow-hidden  ">
@@ -121,7 +147,7 @@ const Home = ({ lands, events }) => {
                 <AnimateOnScroll varient={fadeInAnimation}>
                   <Link href="/request" className="flex-1">
                     <Button
-                      title={'برای درخواست سرزمین نمایشگاهی کلیک کن'}
+                      title={"برای درخواست سرزمین   کلیک کن"}
                       className="sm:!w-fit flex-1  sm:px-9 text-xs sm:text-base py-4 cursor-pointer hover:bg-primaryLight transition-all bg-white hover:!text-white rounded-xl flex items-center space-x-4 space-x-reverse  !text-primaryLight "
                     ></Button>
                   </Link>
@@ -146,7 +172,7 @@ const Home = ({ lands, events }) => {
       <div className="w-full bg-primaryDark    pt-10 sm:px-0 px-6">
         <div className="w-full flex sm:flex-row flex-col-reverse items-center  container-lg py-20">
           <AnimateOnScroll
-            className={'flex-1'}
+            className={"flex-1"}
             varient={{
               ...RTLslideInAnimation,
               transition: { duration: 1, delay: 1 },
@@ -261,14 +287,11 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-              خدمات تات
+              ویژگی های اکسپوورس
             </h1>
             <AnimateOnScroll>
               <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
-                با نمایشگاه مجازی تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا
-                .. خود را با کمترین زحمت بسازید و به نمایش عمو با نمایشگاه مجازی
-                تات شما میتوانید نمایشگاه هنری ، تکنولوژی و یا .. خود را با
-                کمترین زحمت بسازید و به نمایش عمو
+           
               </p>
             </AnimateOnScroll>
           </AnimateOnScroll>
@@ -279,7 +302,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
-              {[',', ',', ',', '', ',', ','].map((item, index) => (
+              {featurs.map((item, index) => (
                 <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
                   <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
                     <Icon
@@ -319,7 +342,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-              نمایشگاه های تات
+            نمایشگاه های فعال
             </h1>
             <AnimateOnScroll
               varient={{
@@ -329,7 +352,7 @@ const Home = ({ lands, events }) => {
             >
               <p className="text-lg text-white mx-auto sm:max-w-5xl text-center">
                 نمایشگاه های زیر نمایشگاه هایی هستند که کاربران می توانند به
-                راحتی وارد انها شده و از محیط این نمایش گاه ها دیدن کنند
+                راحتی وارد انها شده و از محیط این نمایشگاه   ها دیدن کنند
               </p>
             </AnimateOnScroll>
           </AnimateOnScroll>
@@ -354,7 +377,7 @@ const Home = ({ lands, events }) => {
             </div>
           </AnimateOnScroll>
         </div>
-      </div>{' '}
+      </div>{" "}
       {/* <div className="w-full bg-primaryDark relative pb-32 pt-10 min-h-[400px]">
         <div className="  absolute right-0 top-0 opacity-40">
           <img src="/assets/img/corner.png" alt="" />
@@ -375,7 +398,7 @@ const Home = ({ lands, events }) => {
         </div>
       </div> */}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
