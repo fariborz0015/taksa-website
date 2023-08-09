@@ -307,7 +307,7 @@ const Home = ({ lands, events }) => {
           >
             <div className="w-full grid gap-6 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
               {featurs.map((item, index) => (
-                <div className="w-full rounded-xl bg-white min-h-[250px] p-16">
+                <div className="w-full rounded-xl bg-white min-h-[250px]  p-6">
                   <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
                     <Icon
                       icon="mdi:emoji-excited-outline"
@@ -320,7 +320,7 @@ const Home = ({ lands, events }) => {
                   <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
                     {item?.title}
                   </div>
-                  <p className="text-black ">{item?.description}</p>
+                  <p className="  text-center mt-4 text-sm text-caption ">{item?.description}</p>
                 </div>
               ))}
             </div>
