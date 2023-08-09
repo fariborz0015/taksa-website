@@ -121,7 +121,7 @@ const Home = ({ lands, events }) => {
                 <AnimateOnScroll varient={fadeInAnimation}>
                   <Link href="/request" className="flex-1">
                     <Button
-                      title={'برای درخواست نمایشگاه کلیک کن !'}
+                      title={'برای درخواست سرزمین نمایشگاهی کلیک کن'}
                       className="sm:!w-fit flex-1  sm:px-9 text-xs sm:text-base py-4 cursor-pointer hover:bg-primaryLight transition-all bg-white hover:!text-white rounded-xl flex items-center space-x-4 space-x-reverse  !text-primaryLight "
                     ></Button>
                   </Link>
@@ -339,7 +339,7 @@ const Home = ({ lands, events }) => {
               transition: { duration: 1, staggerChildren: 1 },
             }}
           >
-            <div className="w-full grid gap-x-6 gap-y-16 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
+            <div className="w-full grid gap-x-6  gap-y-16 sm:grid-cols-3 grid-cols-1 sm:px-0 px-6 mt-16">
               {lands.map((item) => (
                 <AnimateOnScroll
                   key={item.uuid}
