@@ -11,6 +11,8 @@ const RequestLand = () => {
   useEffect(() => {
     if (user?.uuid) {
       setLoginModal(false)
+    }else{
+      setLoginModal(true)
     }
   }, [user])
 
