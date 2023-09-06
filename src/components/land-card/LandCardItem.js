@@ -104,7 +104,7 @@ const LandCardItem = ({ item }) => {
         ) : (
           <img
             onClick={(e) => setHoverCover((prev) => !prev)}
-            src={'/assets/placeholder.png'}
+            src={"/assets/placeholder.png"}
             className="h-full object-cover w-full "
             alt=""
           />
@@ -117,10 +117,14 @@ const LandCardItem = ({ item }) => {
           } `}
         >
           <div className="p-8">
-            <span className="font-bold text-lg">توضیحات :</span>
-            <p className="  text-white mt-2">
-              {item.description?.slice(0, 180) + "..."}
-            </p>
+            {item.description?.length && (
+              <>
+                <span className="font-bold text-lg">توضیحات :</span>
+                <p className="  text-white mt-2">
+                  {item.description?.slice(0, 180) + "..."}
+                </p>
+              </>
+            )}
           </div>
           <Button className="!text-white !bg-black !absolute !bottom-5 !w-fit !px-6 !left-5 ">
             <a
