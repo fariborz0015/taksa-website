@@ -14,6 +14,7 @@ const EventsLayout = ({ children, popular }) => {
       dateStyle: 'medium',
     }).format(date)
   }
+ 
   return (
     <div className="w-full pb-10 ">
       <div className="w-full container">
@@ -46,6 +47,7 @@ const EventsLayout = ({ children, popular }) => {
                   <article className="flex gap-4 py-2" key={index}>
                     <div className="w-20">
                       <Link href={'/events/' + item.uuid}>
+                  
                         <img
                           className="rounded w-full h-full object-fit"
                           src={
@@ -58,7 +60,7 @@ const EventsLayout = ({ children, popular }) => {
                       </Link>
                     </div>
                     <div className=" flex-1 h-full flex flex-col justify-between">
-                      <time className="text-caption">{date(new Date())}</time>
+                      <time className="text-caption">{date(item?.expirationTime)}</time>
                       <h4 className="title usmall ">
                         <Link  href={'/events/' + item.uuid} className="text-black text">
                           {item.title}
