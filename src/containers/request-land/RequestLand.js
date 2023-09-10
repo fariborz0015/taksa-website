@@ -1,20 +1,20 @@
-import Button from '@/components/form/button/Button'
-import Modal from '@/components/modal/Modal'
-import useUser from '@/hooks/api-handlers/auth/useUser'
-import React, { useEffect, useState } from 'react'
-import Auth from '../auth/Auth'
-import RequestForm from './components/RequestForm'
+import Button from "@/components/form/button/Button";
+import Modal from "@/components/modal/Modal";
+import useUser from "@/hooks/api-handlers/auth/useUser";
+import React, { useEffect, useState } from "react";
+import Auth from "../auth/Auth";
+import RequestForm from "./components/RequestForm";
 
 const RequestLand = () => {
-  const { user } = useUser()
-  const [loginModal, setLoginModal] = useState()
+  const { user } = useUser();
+  const [loginModal, setLoginModal] = useState();
   useEffect(() => {
     if (user?.uuid) {
-      setLoginModal(false)
-    }else{
-      setLoginModal(true)
+      setLoginModal(false);
+    } else {
+      setLoginModal(true);
     }
-  }, [user])
+  }, [user]);
 
   return (
     <div className="w-full  text-white rounded-xl py-10 px-6 my-10 container-lg  flex flex-col justify-between   ">
@@ -49,44 +49,45 @@ const RequestLand = () => {
         {user?.uuid ? (
           user.landRequestStatus ? (
             <div className="w-full  ">
-              {user.landRequestStatus == 'send' ?? (
+              {(user.landRequestStatus == "send" ||
+                user.landRequestStatus == "send") && (
                 <p class="text-white pb-4">
                   درخواست سرزمین شما ارسال شده و منتظر تایید ادمین سامانه می
                   باشد. در صورتی که بیش از 24 ساعت از درخواست شما گذشته است برای
                   پی گیری می توانید با پشتیبانی تماس حاصل فرمایید.
                 </p>
               )}
-              {user.landRequestStatus == 'send' ? (
+              {user.landRequestStatus == "send" ? (
                 <div
                   class="bg-blue-100 w-full border rounded-xl h-fit  border-blue-500 text-blue-700 px-4 py-3"
                   role="alert"
                 >
                   <p class="font-bold text-lg"> توجه !</p>
                   <p class="text-sm mt-2">
-                    وضعیت درخواست شما در حالت{' '}
+                    وضعیت درخواست شما در حالت{" "}
                     <b className="font-extrabold"> ارسال شده </b> قرار دارد
                   </p>
                 </div>
-              ) : user.landRequestStatus == 'seen' ? (
+              ) : user.landRequestStatus == "seen" ? (
                 <div
                   class="bg-amber-100  w-full border rounded-xl h-fit border-amber-500 text-amber-700 px-4 py-3"
                   role="alert"
                 >
                   <p class="font-bold text-lg"> توجه !</p>
                   <p class="text-sm mt-2">
-                    وضعیت درخواست شما در حالت{' '}
+                    وضعیت درخواست شما در حالت{" "}
                     <b className="font-extrabold"> دیده شده </b> قرار دارد
                   </p>
                 </div>
-              ) : user.landRequestStatus == 'accept' ? (
+              ) : user.landRequestStatus == "accept" ? (
                 <div
                   class="bg-green-100 w-full border rounded-xl h-fit border-green-500 text-green-700 px-4 py-3"
                   role="alert"
                 >
                   <p class="font-bold text-lg"> تبریک !</p>
                   <p class="text-sm mt-2">
-                    وضعیت درخواست شما در حالت{' '}
-                    <b className="font-extrabold"> پذیرفته شده </b> قرار دارد
+                    سرزمین شما ایجاد شده است ، برای مدیریت سرزمین میتوانید از
+                    منو کاربر اقدام نمایید
                   </p>
                 </div>
               ) : (
@@ -94,10 +95,10 @@ const RequestLand = () => {
                   class="bg-red-100 w-full border rounded-xl h-fit border-red-500 text-red-700 px-4 py-3"
                   role="alert"
                 >
-                  <p class="font-bold text-lg"> توجه !</p>
+                  <p class="font-bold text-lg"> متاسفانه !</p>
                   <p class="text-sm mt-2">
-                    وضعیت درخواست شما در حالت{' '}
-                    <b className="font-extrabold"> رد شده </b> قرار دارد
+                    درخواست سرزمین شما پذیرفته نشد ، برای پیگیری و اطلاعات بیشتر
+                    با پشتیبانی تماس حاصل فرمایید
                   </p>
                 </div>
               )}
@@ -126,7 +127,7 @@ const RequestLand = () => {
         <Auth />
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default RequestLand
+export default RequestLand;
