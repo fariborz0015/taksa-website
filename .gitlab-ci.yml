@@ -1,0 +1,37 @@
+image: node:14  # تصویر اساسی برای بیلد
+
+stages:
+  - build
+  - deploy
+
+variables:
+  # تنظیم متغیرهای محیطی
+  SSH_PRIVATE_KEY: "$SSH_PRIVATE_KEY"
+  SSH_HOST: "185.18.214.5"  # آدرس سرور SSH
+  SSH_PORT: "22"  # پورت SSH
+  SSH_USER: "root"  # نام کاربری SSH
+  REMOTE_PATH: "/tat/front/production/next"  # مسیر ریموت برای دپلوی
+
+before_script:
+  # مراحل پیش‌فرض برای همه جاب‌ها
+  - apt-get update -qy
+  - apt-get install -y openssh-client
+
+build_job:
+  stage: build
+  script:
+    # مراحل بیلد پروژه Next.js
+    - npm install
+    - npm run build
+
+deploy_job:
+  stage: deploy
+  script:
+    # مراحل دپلوی پروژه به سرور
+    - 'which ssh-agent || ( apt-get install -y openssh-client )'  # نصب ssh-agent اگر وجود نداشته باشد
+    - eval $(ssh-agent -s)  # اجرای ssh-agent
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -  # افزودن کلید SSH به ssh-agent
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'  # تنظیمات SSH برای Docker
+    - rsync -r --delete-after --quiet $CI_PROJECT_DIR/build/ $SSH_USER@$SSH_HOST:$REMOTE_PATH  # دپلوی پروژه با Rsync
