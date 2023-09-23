@@ -63,9 +63,10 @@ const RequestLand = () => {
                   role="alert"
                 >
                   <p class="font-bold text-lg"> توجه !</p>
-                  <p class="text-sm mt-2">
-                    وضعیت درخواست شما در حالت{" "}
-                    <b className="font-extrabold"> ارسال شده </b> قرار دارد
+                  <p class="text-sm mt-2"> درخواست سرزمین شما
+                    <b className="font-extrabold"> ارسال شده </b>
+                    و منتظر تایید ادمین سامانه می باشد.
+
                   </p>
                 </div>
               ) : user.landRequestStatus == "seen" ? (
@@ -95,7 +96,7 @@ const RequestLand = () => {
                   class="bg-red-100 w-full border rounded-xl h-fit border-red-500 text-red-700 px-4 py-3"
                   role="alert"
                 >
-                  <p class="font-bold text-lg"> متاسفانه !</p>
+                  <p class="font-bold text-lg"> با عرض پوزش !</p>
                   <p class="text-sm mt-2">
                     درخواست سرزمین شما پذیرفته نشد ، برای پیگیری و اطلاعات بیشتر
                     با پشتیبانی تماس حاصل فرمایید
