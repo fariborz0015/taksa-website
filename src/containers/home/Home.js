@@ -23,31 +23,37 @@ const Home = ({ lands, events }) => {
   const featurs = [
     {
       title: "دسترسی آسان",
+      icon: "ion:accessibility-outline",
       description:
         "امکان بازدید و گشت و گذار در نمایشگاه سه بعدی به طور 24 ساعته بدون محدودیت زمانی و جغرافیایی",
     },
     {
       title: " پشتیبانی از تمامی دستگاه ها  ",
+      icon: "ph:devices",
       description:
         "  امکان بازدید از نمایشگاه با استفاده از موبایل ،لپ تاپ،تبلت و ... بدون نیاز به نصب نرم افزار وتنها از طریق مرورگر ",
     },
     {
       title: " امکان بازدید گروهی ",
+      icon: "lets-icons:group-light",
       description:
         "  امکان بازدید همزمان یک گروه از همکاران ، دوستان و یا خانواده از نمایشگاه متاورسی",
     },
     {
       title: " ارتباط با چت صوتی و متنی",
+      icon: "material-symbols:voice-chat-outline-sharp",
       description:
         " چت صوتی و متنی با غرفه داران، بازدید کنندگان و سایر افراد به صورت همزمان ",
     },
     {
       title: " حضور کاربران با آواتار مجازی",
+      icon: "lets-icons:3d-box-light",
       description:
         " کاربران و غرفه داران می توانند با ایجاد آواتار مد نظر خود در محیط سه بعدی نمایشگاه حضور پیدا کنند و با سایر آواتارها و کاربران تعامل و ارتباط داشته باشند ",
     },
     {
       title: "   انتقال به محل مورد نظر   ",
+      icon: "lucide:route",
       description:
         "  امکان قراردادن پرتال در غرفه و نمایشگاه برای انتقال سریع کاربران به محل مورد نظر (دفتر مجازی شرکت، اتاق جلسات، ساختمان در حال ساخت، مزرعه).",
     },
@@ -310,7 +316,7 @@ const Home = ({ lands, events }) => {
                 <div className="w-full rounded-xl bg-white min-h-[250px]  p-6">
                   <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
                     <Icon
-                      icon="mdi:emoji-excited-outline"
+                      icon={item.icon}
                       width={32}
                       color="var(--color-primary)"
                       className="opacity-50"
@@ -320,7 +326,9 @@ const Home = ({ lands, events }) => {
                   <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
                     {item?.title}
                   </div>
-                  <p className="  text-center mt-4 text-sm text-caption ">{item?.description}</p>
+                  <p className="  text-center mt-4 text-sm text-caption ">
+                    {item?.description}
+                  </p>
                 </div>
               ))}
             </div>
