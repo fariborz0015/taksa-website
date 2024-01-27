@@ -17,6 +17,7 @@ import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 
 const Home = ({ lands, events }) => {
+  console.log(lands)
   const { isLoading, submit, setIsLoading } = useRequestLand();
   const { success, error } = useAlert();
   const movmentEl = useRef(null);

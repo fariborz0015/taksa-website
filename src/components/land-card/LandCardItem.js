@@ -66,7 +66,7 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import useUser from "@/hooks/api-handlers/auth/useUser";
 import { landLinkMaker, sortByattantion } from "@/utils/helper";
 import VideoPlayer from "@/components/video-player/VideoPlayer";
@@ -85,30 +85,35 @@ const LandCardItem = ({ item }) => {
   return (
     <div className="  rounded-xl bg-white  w-[350px] h-[350px] group ">
       <div className="mx-auto rounded-xl  w-[350px] h-[350px]  overflow-hidden relative  flex justify-center items-center   bg-[#e8f3fd] ">
-        {item.media.length > 0 ? (
-          item?.media[0]?.type == "image" ? (
-            <img
-              onClick={(e) => setHoverCover((prev) => !prev)}
-              src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
-              className="h-full object-cover w-full "
-              alt=""
-            />
-          ) : (
-            <VideoPlayer
-              src={ApiConstants?.mediaBaseUrl + item.media[0]?.uuid}
-              className="  bg-black"
-              height={"100%"}
-              controls
-            />
-          )
-        ) : (
-          <img
-            onClick={(e) => setHoverCover((prev) => !prev)}
-            src={"/assets/placeholder.png"}
-            className="h-full object-cover w-full "
-            alt=""
-          />
-        )}
+        <Swiper
+          modules={[Navigation,Autoplay]}
+          navigation
+          autoHeight
+          loop
+          autoplay={{
+            delay:1500,
+          }}
+        >
+          {sortedMedia?.map((medi) => (
+            <SwiperSlide key={medi.uuid}>
+              {medi?.type == "image" ? (
+                <img
+                  onClick={(e) => setHoverCover((prev) => !prev)}
+                  src={ApiConstants?.mediaBaseUrl + medi?.uuid}
+                  className="h-full object-cover w-full "
+                  alt=""
+                />
+              ) : (
+                <VideoPlayer
+                  src={ApiConstants?.mediaBaseUrl + medi?.uuid}
+                  className="  bg-black"
+                  height={"100%"}
+                  controls
+                />
+              )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         <div
           onClick={(e) => setHoverCover((prev) => !prev)}
