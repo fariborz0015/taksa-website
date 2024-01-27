@@ -366,7 +366,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-              نمایشگاه های فعال
+            ورود به متاورس کشاورزی ایران
             </h1>
             <AnimateOnScroll
               varient={{
