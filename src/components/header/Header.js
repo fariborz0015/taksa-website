@@ -38,9 +38,9 @@ const Header = () => {
           <Link href="/" className="flex items-center">
             <div className="pt-1 max-w-[130px] h-[35px]   cursor-pointer">
               <img
-                src="/assets/img/logo.png"
+                src="/assets/img/TAT_Logo.png"
                 alt=""
-                className="w-full h-full "
+                className="w-full h-20 relative -top-8 "
               />
             </div>
           </Link>
