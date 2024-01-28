@@ -105,8 +105,8 @@ module.exports = {
           '--swiper-theme-color': '#FF7F74 !important',
         },
       }),
-        require('tailwind-children'),
-        require('tw-elements/dist/plugin')
+        require('tailwind-children')
+       
     }),
   ],
 }
