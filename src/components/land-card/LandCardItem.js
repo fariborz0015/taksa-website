@@ -96,21 +96,14 @@ const LandCardItem = ({ item }) => {
         >
           {sortedMedia?.map((medi) => (
             <SwiperSlide key={medi.uuid}>
-              {medi?.type == "image" ? (
+           
                 <img
                   onClick={(e) => setHoverCover((prev) => !prev)}
                   src={ApiConstants?.mediaBaseUrl + medi?.uuid}
                   className="h-full object-cover w-full "
                   alt=""
                 />
-              ) : (
-                <VideoPlayer
-                  src={ApiConstants?.mediaBaseUrl + medi?.uuid}
-                  className="  bg-black"
-                  height={"100%"}
-                  controls
-                />
-              )}
+             
             </SwiperSlide>
           ))}
         </Swiper>
