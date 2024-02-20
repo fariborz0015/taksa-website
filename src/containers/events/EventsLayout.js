@@ -1,20 +1,20 @@
-import Pagination from '@/components/pagination/Pagination'
-import { ApiConstants } from '@/constants'
-import { Icon } from '@iconify/react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React from 'react'
+import Pagination from "@/components/pagination/Pagination";
+import { ApiConstants } from "@/constants";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 
 const EventsLayout = ({ children, popular }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const date = (date) => {
-    let d = new Date(date)
-    return new Intl.DateTimeFormat('fa-IR', {
-      dateStyle: 'medium',
-    }).format(date)
-  }
- 
+    let d = new Date(date);
+    return new Intl.DateTimeFormat("fa-IR", {
+      dateStyle: "medium",
+    }).format(date);
+  };
+
   return (
     <div className="w-full pb-10 ">
       <div className="w-full container">
@@ -30,7 +30,7 @@ const EventsLayout = ({ children, popular }) => {
               </div>
               <div className="w-full p-4 bg-white flex gap-4 rounded-lg mt-2">
                 <button className="w-10 h-10 flex items-center rounded-lg bg-primaryLight text-white justify-center">
-                  <Icon icon={'mdi:search'} />
+                  <Icon icon={"mdi:search"} />
                 </button>
                 <input
                   type="text"
@@ -43,32 +43,43 @@ const EventsLayout = ({ children, popular }) => {
                 رویداد های پر طرفدار
               </div>
               <div className="w-full p-4 divide-y  bg-white flex flex-col   rounded-lg mt-2">
-                {popular.map((item, index) => (
-                  <article className="flex gap-4 py-2" key={index}>
-                    <div className="w-20">
-                      <Link href={'/events/' + item.uuid}>
-                  
-                        <img
-                          className="rounded w-full h-full object-fit"
-                          src={
-                            item?.media?.uuid
-                              ? ApiConstants.eventMediaBaseUrl + item.media.uuid
-                              : '/assets/img/blog1.png'
-                          }
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className=" flex-1 h-full flex flex-col justify-between">
-                      <time className="text-caption">{date(item?.expirationTime)}</time>
-                      <h4 className="title usmall ">
-                        <Link  href={'/events/' + item.uuid} className="text-black text">
-                          {item.title}
+                {popular.length > 0 ? (
+                  popular.map((item, index) => (
+                    <article className="flex gap-4 py-2" key={index}>
+                      <div className="w-20">
+                        <Link href={"/events/" + item.uuid}>
+                          <img
+                            className="rounded w-full h-full object-fit"
+                            src={
+                              item?.media?.uuid
+                                ? ApiConstants.eventMediaBaseUrl +
+                                  item.media.uuid
+                                : "/assets/img/blog1.png"
+                            }
+                            alt=""
+                          />
                         </Link>
-                      </h4>
-                    </div>
-                  </article>
-                ))}
+                      </div>
+                      <div className=" flex-1 h-full flex flex-col justify-between">
+                        <time className="text-caption">
+                          {date(item?.expirationTime)}
+                        </time>
+                        <h4 className="title usmall ">
+                          <Link
+                            href={"/events/" + item.uuid}
+                            className="text-black text"
+                          >
+                            {item.title}
+                          </Link>
+                        </h4>
+                      </div>
+                    </article>
+                  ))
+                ) : (
+                  <div className="w-full text-center text-black">
+                    هیچ محتوایی وجود ندارد
+                  </div>
+                )}
               </div>
             </div>
 
@@ -89,10 +100,8 @@ const EventsLayout = ({ children, popular }) => {
           </div>
         </div>
       </div>
-
- 
     </div>
-  )
-}
+  );
+};
 
-export default EventsLayout
+export default EventsLayout;

@@ -40,6 +40,7 @@ const LoginByPhone = () => {
   const handleClick = () => {
     submit()
       .then((res) => {
+        console.log("test");
         success(res?.data?.result?.status?.message);
 
         setUser({
@@ -54,11 +55,11 @@ const LoginByPhone = () => {
           });
         };
 
-        if (isAdmin()) {
-          location.replace(
-            loginLinkMaker({ token: res?.data?.result?.data?.token })
-          );
-        }
+        // if (isAdmin()) {
+        //   location.replace(
+        //     loginLinkMaker({ token: res?.data?.result?.data?.token })
+        //   );
+        // }
       })
       .catch((err) => {
         error(err.response?.data?.result?.status?.message);
@@ -115,7 +116,7 @@ const LoginByPhone = () => {
         disabled={!validationStatus}
         isLoading={isLoading}
         title={"ورود "}
-        onClick={handleClick}
+        type={"submit"}
       />
     </form>
   );
