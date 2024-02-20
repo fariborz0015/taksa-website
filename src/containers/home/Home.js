@@ -146,7 +146,7 @@ const Home = ({ lands, events }) => {
                 }}
               >
                 <h1 className="sm:text-4xl text-xl text-white font-bold ">
-                  متاورس کشاورزی ایران.
+                  متاورس کشاورزی ایران
                 </h1>
               </AnimateOnScroll>
 
@@ -161,7 +161,7 @@ const Home = ({ lands, events }) => {
                 </p>
               </AnimateOnScroll>
               <div className="w-full flex space-x-reverse space-x-4 mt-16 justify-end">
-                {/* <AnimateOnScroll
+                <AnimateOnScroll
                   varient={{
                     ...fadeInAnimation,
                     transition: { duration: 1, delay: 0.5 },
@@ -170,15 +170,15 @@ const Home = ({ lands, events }) => {
                   <Button className="sm:px-9 px-6 max-w-fit  py-4 hover:bg-primary transition-all bg-primaryLight rounded-xl flex items-center space-x-4 space-x-reverse  text-white ">
                     <span> اطلاعات بیشتر </span>
                   </Button>
-                </AnimateOnScroll> */}
-                {/* <AnimateOnScroll varient={fadeInAnimation}>
+                </AnimateOnScroll>
+                <AnimateOnScroll varient={fadeInAnimation}>
                   <Link href="/request" className="flex-1">
                     <Button
                       title={"برای درخواست سرزمین   کلیک کن"}
                       className="sm:!w-fit flex-1  sm:px-9 text-xs sm:text-base py-4 cursor-pointer hover:bg-primaryLight transition-all bg-white hover:!text-white rounded-xl flex items-center space-x-4 space-x-reverse  !text-primaryLight "
                     ></Button>
                   </Link>
-                </AnimateOnScroll> */}
+                </AnimateOnScroll>
               </div>
             </div>
           </div>
@@ -314,7 +314,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-            ویژگی های متاورس کشاورزی ایران
+              ویژگی های متاورس کشاورزی ایران
             </h1>
             <AnimateOnScroll>
               <p className="text-lg text-white mx-auto sm:max-w-5xl text-center"></p>
@@ -366,7 +366,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-            ورود به متاورس کشاورزی ایران
+              ورود به متاورس کشاورزی ایران
             </h1>
             <AnimateOnScroll
               varient={{
