@@ -63,7 +63,10 @@ const LoginByEmail = () => {
       })
   }
   return (
-    <div className="w-full">
+    <form className="w-full" onSubmit={(e)=>{
+      e.preventDefault()
+      handleClick()
+    }}>
       <Input
         error={errors?.email}
         value={data?.email}
@@ -107,7 +110,7 @@ const LoginByEmail = () => {
         title={'ورود '}
         onClick={handleClick}
       />
-    </div>
+    </form>
   )
 }
 
