@@ -8,7 +8,7 @@ export const roleCheck = ({ roles, roleToCheck }) => {
 export const landLinkMaker = (params = { token, landUuid }) => {
   const json = JSON.stringify(params)
   const base64 = btoa(json)
-  return  'http://45.156.184.188:1050/land?utm=' + base64
+  return  ApiConstants.baseUrl+'land?utm=' + base64
 }
 
 export const loginLinkMaker = (params = { token }) => {
