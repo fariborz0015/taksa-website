@@ -55,11 +55,11 @@ const LoginByPhone = () => {
           });
         };
 
-        // if (isAdmin()) {
-        //   location.replace(
-        //     loginLinkMaker({ token: res?.data?.result?.data?.token })
-        //   );
-        // }
+        if (isAdmin()) {
+          location.replace(
+            loginLinkMaker({ token: res?.data?.result?.data?.token })
+          );
+        }
       })
       .catch((err) => {
         error(err.response?.data?.result?.status?.message);
