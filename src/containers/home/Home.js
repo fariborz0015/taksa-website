@@ -17,48 +17,71 @@ import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 
 const Home = ({ lands, events }) => {
+  console.log(lands);
   const { isLoading, submit, setIsLoading } = useRequestLand();
   const { success, error } = useAlert();
   const movmentEl = useRef(null);
   const featurs = [
     {
       title: "دسترسی آسان",
+      icon: "ion:accessibility-outline",
       description:
         "امکان بازدید و گشت و گذار در نمایشگاه سه بعدی به طور 24 ساعته بدون محدودیت زمانی و جغرافیایی",
     },
     {
       title: " پشتیبانی از تمامی دستگاه ها  ",
+      icon: "ph:devices",
       description:
         "  امکان بازدید از نمایشگاه با استفاده از موبایل ،لپ تاپ،تبلت و ... بدون نیاز به نصب نرم افزار وتنها از طریق مرورگر ",
     },
     {
       title: " امکان بازدید گروهی ",
+      icon: "lets-icons:group-light",
       description:
         "  امکان بازدید همزمان یک گروه از همکاران ، دوستان و یا خانواده از نمایشگاه متاورسی",
     },
     {
       title: " ارتباط با چت صوتی و متنی",
+      icon: "material-symbols:voice-chat-outline-sharp",
       description:
         " چت صوتی و متنی با غرفه داران، بازدید کنندگان و سایر افراد به صورت همزمان ",
     },
     {
       title: " حضور کاربران با آواتار مجازی",
+      icon: "lets-icons:3d-box-light",
       description:
         " کاربران و غرفه داران می توانند با ایجاد آواتار مد نظر خود در محیط سه بعدی نمایشگاه حضور پیدا کنند و با سایر آواتارها و کاربران تعامل و ارتباط داشته باشند ",
     },
     {
       title: "   انتقال به محل مورد نظر   ",
+      icon: "lucide:route",
       description:
         "  امکان قراردادن پرتال در غرفه و نمایشگاه برای انتقال سریع کاربران به محل مورد نظر (دفتر مجازی شرکت، اتاق جلسات، ساختمان در حال ساخت، مزرعه).",
     },
   ];
-  const customers = Array(5)
-    .fill("1")
-    .map((item, index) => ({
-      src: "/assets/img/customers/" + (index + 1) + ".png",
-    }));
 
-  console.log(customers);
+  const customers = [
+    {
+      title: "موسسه تحقیقات آب و خاک",
+      src: "/assets/img/customers/abkhak.png",
+    },
+    {
+      title: "موسسه تحقیقات علوم دامی کشور",
+      src: "/assets/img/customers/Dami.png",
+    },
+    {
+      title: "موسسه تحقیقات فنی و مهندسی کشاورزی",
+      src: "/assets/img/customers/faniMohandesi.png",
+    },
+    {
+      title: "موسسه واکسن و سرم سازی رازی",
+      src: "/assets/img/customers/Razi.png",
+    },
+    {
+      title: "موسسه تحقیقات علوم شیلاتی کشور",
+      src: "/assets/img/customers/shilat.png",
+    },
+  ];
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -123,7 +146,7 @@ const Home = ({ lands, events }) => {
                 }}
               >
                 <h1 className="sm:text-4xl text-xl text-white font-bold ">
-                  اکسپوورس، نسل بعدی نمایشگاه مجازی با فناوری متاورس
+                  متاورس کشاورزی ایران
                 </h1>
               </AnimateOnScroll>
 
@@ -134,9 +157,7 @@ const Home = ({ lands, events }) => {
                 }}
               >
                 <p className="text-white mt-10 sm:text-base text-xs">
-                  فارغ از محدودیت های دنیای واقعی برای کسب و کار خود نمایشگاه سه
-                  بعدی برگزار کنید، محصولات خود را معرفی کنید، با مشتریان خود
-                  ارتباط برقرار کنید.
+                  سازمات تحقیقات، آموزش و ترویج کشاورزی ایران
                 </p>
               </AnimateOnScroll>
               <div className="w-full flex space-x-reverse space-x-4 mt-16 justify-end">
@@ -165,7 +186,7 @@ const Home = ({ lands, events }) => {
       </div>
       <div className="w-full bg-primaryDark  mt-10 pt-10 sm:px-0  ">
         <h1 className="w-full container-lg text-center font-bold text-2xl text-white">
-          مشتریان ما
+          موسسات تات
         </h1>
         <div dir="rtl" className="w-full    container-lg  py-10">
           <Slider
@@ -197,7 +218,8 @@ const Home = ({ lands, events }) => {
                 }}
               >
                 <h1 className="text-4xl text-white font-bold">
-                  با دنیای نمایشگاه های مجازی متاورس، در آینده غوطه ور شوید
+                  با متاورس کشاورزی ایران در آینده نمایشگاه های کشاورزی غوطه ور
+                  شوید
                 </h1>
               </AnimateOnScroll>
               <AnimateOnScroll
@@ -207,13 +229,12 @@ const Home = ({ lands, events }) => {
                 }}
               >
                 <p className="text-white mt-10 text-justify">
-                  به ویراورس خوش آمدید. پلت فرم ما شما را به سرزمین های
-                  نمایشگاهی فراتر از مرزهای واقعیت می برد. نمایشگاه ها را کاوش
-                  کنید، محصولات مورد نیاز خود را بیابید، در همایش ها شرکت کنید و
-                  با غرفه ها و سایر شرکت کنندگان ارتباط داشته باشید. <br />
-                  حتی می توانید سرزمین نمایشگاهی خود را داشته باشید و دسترسی
-                  مشتریانتان را فراتر از زمان و مکان گسترش دهید. موانع موقعیت
-                  مکانی را بشکنید و مخاطبین را از هرکجای جهان جذب کنید.
+                  متاورس کشاورزی ایران ما شما را به سرزمین های نمایشگاهی فراتر
+                  از مرزهای واقعیت می برد. نمایشگاه ها را کاوش کنید، محصولات
+                  مورد نیاز خود را بیابید، در همایش ها شرکت کنید و با غرفه ها و
+                  سایر شرکت کنندگان ارتباط داشته باشید. و دسترسی مشتریانتان را
+                  فراتر از زمان و مکان گسترش دهید. موانع موقعیت مکانی را بشکنید
+                  و مخاطبین را از هرکجای جهان جذب کنید
                 </p>
               </AnimateOnScroll>
               <AnimateOnScroll
@@ -293,7 +314,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-              ویژگی های اکسپوورس
+              ویژگی های متاورس کشاورزی ایران
             </h1>
             <AnimateOnScroll>
               <p className="text-lg text-white mx-auto sm:max-w-5xl text-center"></p>
@@ -310,7 +331,7 @@ const Home = ({ lands, events }) => {
                 <div className="w-full rounded-xl bg-white min-h-[250px]  p-6">
                   <span className="mx-auto w-16 h-16 flex justify-center items-center rounded-full bg-[#e8f3fd] ">
                     <Icon
-                      icon="mdi:emoji-excited-outline"
+                      icon={item.icon}
                       width={32}
                       color="var(--color-primary)"
                       className="opacity-50"
@@ -320,7 +341,9 @@ const Home = ({ lands, events }) => {
                   <div className="text-black mt-2 font-bold text-lg mx-auto text-center w-full  ">
                     {item?.title}
                   </div>
-                  <p className="  text-center mt-4 text-sm text-caption ">{item?.description}</p>
+                  <p className="  text-center mt-4 text-sm text-caption ">
+                    {item?.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -343,7 +366,7 @@ const Home = ({ lands, events }) => {
             }}
           >
             <h1 className="text-white text-3xl font-bold text-center">
-              نمایشگاه های فعال
+              ورود به متاورس کشاورزی ایران
             </h1>
             <AnimateOnScroll
               varient={{

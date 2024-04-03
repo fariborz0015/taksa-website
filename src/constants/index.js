@@ -16,43 +16,43 @@ export const QUERY_KEYS = {
 export const NAV_ITEMS = [
   {
     id: uuidv4(),
-    title: 'درباره اکسپوورس',
+    title: ' درباره متاورس کشاورزی  ',
   },
-  {
-    id: uuidv4(),
-    title: 'سرزمین های نمایشگاهی',
-  },
-  {
-    id: uuidv4(),
-    title: 'سرویس ها ',
-    children: [
-      {
-        id: uuidv4(),
-        title: ' تعرفه ها ',
-      },
-      {
-        id: uuidv4(),
-        title: '  برای کسب و کارها   ',
-      },
-      {
-        id: uuidv4(),
-        title: ' برای بازدید کنندگان  ',
-      },
-    ],
-  },
+  // {
+  //   id: uuidv4(),
+  //   title: 'سرزمین های نمایشگاهی',
+  // },
+  // {
+  //   id: uuidv4(),
+  //   title: 'سرویس ها ',
+  //   children: [
+  //     {
+  //       id: uuidv4(),
+  //       title: ' تعرفه ها ',
+  //     },
+  //     {
+  //       id: uuidv4(),
+  //       title: '  برای کسب و کارها   ',
+  //     },
+  //     {
+  //       id: uuidv4(),
+  //       title: ' برای بازدید کنندگان  ',
+  //     },
+  //   ],
+  // },
   {
     id: uuidv4(),
     title: 'راهنما ',
-    children: [
-      {
-        id: uuidv4(),
-        title: ' پرسشهای متداول  ',
-      },
-      {
-        id: uuidv4(),
-        title: ' کاربردها ',
-      },
-    ],
+    // children: [
+    //   {
+    //     id: uuidv4(),
+    //     title: ' پرسشهای متداول  ',
+    //   },
+    //   {
+    //     id: uuidv4(),
+    //     title: ' کاربردها ',
+    //   },
+    // ],
   },
   {
     id: uuidv4(),

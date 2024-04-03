@@ -12,16 +12,16 @@ const Footer = () => {
             <div className=" grid grid-cols-12 xs:mb-12 md:mb-9 lg:mb-0">
               <div className="xs:col-span-12 md:col-span-4 md:pl-12">
                 <div className="flex flex-col">
-                  <h1 className="font-medium xs:text-base md:text-xl text-grey-900 xs:mb-6 md:mb-9 xs:pr-4 md:pr-0">
+                  {/* <h1 className="font-medium xs:text-base md:text-xl text-grey-900 xs:mb-6 md:mb-9 xs:pr-4 md:pr-0">
                     راه های ارتباطی
-                  </h1>
+                  </h1> */}
                   <div className="xs:mb-6 md:mb-4 xs:pl-8 md:pl-0 xs:pr-4 md:pr-0">
                     <p className="font-normal xs:text-sm md:text-base text-grey-800 mb-1">
                       تلفن پشتیبانی: 1536
                     </p>
-                    <p className="font-normal xs:text-sm md:text-base text-grey-800 mb-1">
+                    {/* <p className="font-normal xs:text-sm md:text-base text-grey-800 mb-1">
                       آدرس: خیابان احمد قصیر - کوچه اول - پلاک ۴{' '}
-                    </p>
+                    </p> */}
                     <p className="font-normal xs:text-sm md:text-base text-grey-800 mb-1">
                       ایمیل: info@okala.com
                     </p>
@@ -34,7 +34,7 @@ const Footer = () => {
                     اکسپو ورس
                   </h1>
                   <ul className="xs:pr-4 md:px-0">
-                    <li className="mb-4">
+                    {/* <li className="mb-4">
                       <a
                         className="hover:text-teal-600 focus:text-teal-600 xs:text-sm md:text-base xs:font-normal"
                         href="https://blog.okala.com/"
@@ -43,7 +43,7 @@ const Footer = () => {
                       >
                         بلاگ
                       </a>
-                    </li>
+                    </li> */}
                     <li className="mb-4">
                       <a
                         className="hover:text-teal-600 focus:text-teal-600 xs:text-sm md:text-base xs:font-normal"
@@ -71,7 +71,7 @@ const Footer = () => {
                     خدمات مشتریان
                   </h1>
                   <ul className="xs:pr-4 md:pr-0">
-                    <li className="mb-4">
+                    {/* <li className="mb-4">
                       <a
                         className="hover:text-teal-600 focus:text-teal-600 xs:text-sm md:text-base xs:font-normal"
                         rel="nofollow"
@@ -79,7 +79,7 @@ const Footer = () => {
                       >
                         شرایط عضویت
                       </a>
-                    </li>
+                    </li> */}
                     <li className="mb-4">
                       <a
                         className="hover:text-teal-600 focus:text-teal-600 xs:text-sm md:text-base xs:font-normal"
