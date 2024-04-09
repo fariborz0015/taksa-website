@@ -9,7 +9,7 @@ const nextConfig = {
     MEDIAA_BASE_URL: process.env.MEDIAA_BASE_URL,
     EVENT_MEDIA_BASE_URL: process.env.EVENT_MEDIA_BASE_URL,
     DASHBOARD_URL: process.env.DASHBOARD_URL,
- 
+    METAVERSE_URL: process.env.METAVERSE_URL,
   },
 }
 

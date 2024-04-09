@@ -6,6 +6,7 @@ export const ApiConstants = {
   mediaBaseUrl: process.env.API_BASE_URL+"admin/land/media/",
   eventMediaBaseUrl: process.env.API_BASE_URL+"Admin/website/news/getmedia?uuid=",
   dashboardUrl: process.env.DASHBOARD_URL,
+  metaverseUrl: process.env.METAVERSE_URL,
 }
 
 export const QUERY_KEYS = {
