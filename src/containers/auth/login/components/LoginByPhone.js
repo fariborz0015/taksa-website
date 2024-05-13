@@ -40,7 +40,7 @@ const LoginByPhone = () => {
   const handleClick = () => {
     submit()
       .then((res) => {
-        console.log("test");
+       
         success(res?.data?.result?.status?.message);
 
         setUser({
@@ -88,7 +88,7 @@ const LoginByPhone = () => {
           value: data?.phoneNumber,
           onChange: (e) => {
             handleChange(e);
-            setData({ phoneNumber: e.target.value.replace(/^0/, "") });
+            setData({ phoneNumber: e.target.value.replace(/^0+|[^0-9]+/g, "") });
           },
         }}
       />

@@ -117,7 +117,7 @@ const SignUpByPhone = () => {
             value: data?.phoneNumber,
             onChange: (e) => {
               handleChange(e)
-              setData({ phoneNumber: e.target.value.replace(/^0/, '') })
+              setData({ phoneNumber: e.target.value.replace(/^0+|[^0-9]+/g, "") });
             },
           }}
         />

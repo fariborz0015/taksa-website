@@ -46,7 +46,7 @@ const Slider = ({
       {items.map((item, index) => (
         <SwiperSlide className="!bg-transparent" key={index}>
           <ItemComponent {...{ [dataKeyProps]: item }} />
-          <span className='text-center block w-full'>{item?.title}</span>
+          <span className='text-center block w-full text-white'>{item?.title}</span>
         </SwiperSlide>
       ))}
     </Swiper>
