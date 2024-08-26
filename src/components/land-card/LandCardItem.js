@@ -126,7 +126,7 @@ const LandCardItem = ({ item }) => {
           </div>
           <Button className="!text-white !bg-black !absolute !bottom-5 !w-fit !px-6 !left-5 ">
             <a
-              href={landLinkMaker({ token: user.token, landUuid: item?.uuid })}
+              href={landLinkMaker({landUuid: item?.uuid  })}
               target="_blank"
             >
               مشاهده

@@ -1,4 +1,5 @@
 import { ApiConstants } from "@/constants";
+import Cookies from "js-cookie";
 export const roleCheck = ({ roles, roleToCheck }) => {
   return roles?.some((item) => {
     return item.roleName === roleToCheck;
@@ -6,9 +7,11 @@ export const roleCheck = ({ roles, roleToCheck }) => {
 };
 
 export const landLinkMaker = (params = { token, landUuid }) => {
+  if (Cookies.get("token")) {
+    params.token = Cookies.get("token");
+  }
   const json = JSON.stringify(params);
   const base64 = btoa(json);
- 
   return ApiConstants.metaverseUrl + "?utm=" + base64;
 };
 
